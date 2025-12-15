@@ -1,0 +1,70 @@
+<app-tabs-product></app-tabs-product>
+
+<form id="form-product" method = "POST" class="MyForm" [formGroup]="pricesProductForm">
+    <app-my-header [titlePage]="titlePage" [detailPage]="detailPage"></app-my-header>
+    
+    <div class="mb-3">
+        <output id = "sku"><h5>SKU {{sku}}</h5></output>
+    </div>
+
+    <div id="pricesProductGrid">
+        <div id="basePriceDiv" class="mb-4">
+            <label for="basePriceTaxes" class="form-label">*Costo</label>
+            <input type = "numeric" id = "basePriceTaxes" class="form-control" data-validation = "numeric" formControlName="basePriceTaxes"  [ngClass]="{'is-invalid': pricesProductForm.get('basePriceTaxes')?.invalid && pricesProductForm.get('basePriceTaxes')?.touched}" title="Costo del producto con impuestos."/>
+            <div *ngIf="pricesProductForm.get('basePriceTaxes')?.invalid && pricesProductForm.get('basePriceTaxes')?.touched" class="invalid-feedback">
+                <small class="text-danger">El costo es requerido.</small>
+            </div>
+        </div>
+
+        <div id="listOneDiv" class="mb-4">
+            <label for="listOneTaxes" class="form-label">*Lista 1</label>
+            <input type = "numeric" id = "listOneTaxes" class="form-control" data-validation = "numeric" formControlName="listOneTaxes" [ngClass]="{'is-invalid': pricesProductForm.get('listOneTaxes')?.invalid && pricesProductForm.get('listOneTaxes')?.touched}" title="Precio con impuestos para la lista 1."/>
+            <div *ngIf="pricesProductForm.get('listOneTaxes')?.invalid && pricesProductForm.get('listOneTaxes')?.touched" class="invalid-feedback">
+                <small class="text-danger">El precio de lista 1 es requerido.</small>
+            </div>
+        </div>
+
+        <div id="listTwoDiv" class="mb-4">
+            <label for="listTwoTaxes" class="form-label">*Lista 2</label>
+            <input type = "numeric" id = "listTwoTaxes" class="form-control" data-validation = "numeric" formControlName="listTwoTaxes" [ngClass]="{'is-invalid': pricesProductForm.get('listTwoTaxes')?.invalid && pricesProductForm.get('listTwoTaxes')?.touched}" title="Precio con impuestos para la lista 2."/>
+            <div *ngIf="pricesProductForm.get('listTwoTaxes')?.invalid && pricesProductForm.get('listTwoTaxes')?.touched" class="invalid-feedback">
+                <small class="text-danger">El precio de lista 2 es requerido.</small>
+            </div>
+        </div>
+
+        <div id="listThreeDiv" class="mb-4">
+            <label for="listThreeTaxes" class="form-label">*Lista 3</label>
+            <input type = "numeric" id = "listThreeTaxes" class="form-control" data-validation = "numeric" formControlName="listThreeTaxes" [ngClass]="{'is-invalid': pricesProductForm.get('listThreeTaxes')?.invalid && pricesProductForm.get('listThreeTaxes')?.touched}" title="Precio con impuestos para la lista 3."/>
+            <div *ngIf="pricesProductForm.get('listThreeTaxes')?.invalid && pricesProductForm.get('listThreeTaxes')?.touched" class="invalid-feedback">
+                <small class="text-danger">El precio de lista 3 es requerido.</small>
+            </div>
+        </div>
+
+        <div id="ivaDiv" class="mb-4">
+            <label for="iva" class="form-label">*%IVA</label>
+            <input type = "numeric" id = "iva" class="form-control" data-validation = "numeric" formControlName="iva" [ngClass]="{'is-invalid': pricesProductForm.get('iva')?.invalid && pricesProductForm.get('iva')?.touched}" title="Porcentaje de IVA incluido el precio."/>
+            <div *ngIf="pricesProductForm.get('iva')?.invalid && pricesProductForm.get('iva')?.touched" class="invalid-feedback">
+                <small class="text-danger">El IVA es requerido.</small>
+            </div>
+        </div>
+
+        <div id="iepsDiv" class="mb-4">
+            <label for="ieps" class="form-label">*%IEPS</label>
+            <input type = "numeric" id = "ieps" class="form-control" data-validation = "numeric" formControlName="ieps" [ngClass]="{'is-invalid': pricesProductForm.get('ieps')?.invalid && pricesProductForm.get('ieps')?.touched}" title="Porcentaje de IEPS incluido el precio."/>
+            <div *ngIf="pricesProductForm.get('ieps')?.invalid && pricesProductForm.get('ieps')?.touched" class="invalid-feedback">
+                <small class="text-danger">El IEPS es requerido.</small>
+            </div>
+        </div>
+
+        <div id="priceReturnDiv" class="mb-4" *ngIf="product && product.return">
+            <label for="priceReturn" class="form-label">*Precio envase</label>
+            <input type = "numeric" id = "priceReturn" formControlName="priceReturn" class="form-control" data-validation = "numeric"/>
+        </div>
+     
+    </div>
+
+    <div class="saveProductBtn">
+        <input type="submit" id="saveBtn" class="btn btn-primary" value ="Guardar" data-bs-toggle="modal" data-bs-target="#staticBackdrop"/>
+    </div>
+
+</form>

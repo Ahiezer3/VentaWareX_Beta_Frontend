@@ -1,0 +1,145 @@
+<aside 
+id="menu" class="MyMenu" [class.open]="menuOpen">
+
+  <nav> 
+      <ul class="nav flex-column menu">
+
+        <li #homeItem>
+          <a class="nav-link active" aria-disabled="true"  (click)="navigateTo('home')">
+            <div>
+              <i class="fa-solid fa-house"></i>
+              <span>Inicio</span>
+            </div>
+          </a>
+        </li>
+
+        <li class="iconHide" #saleProductsItem>
+          <a class="nav-link active" aria-disabled="true"  (click)="navigateTo('saleProducts')">
+            <div>
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span>Nueva venta</span>
+            </div>
+          </a>
+        </li>
+
+        <li #productItem>
+          <a class="nav-link active" aria-disabled="true"  (click)="navigateTo('product')">
+            <div>
+              <i class="fa-solid fa-bottle-water"></i>
+              <span>Nuevo producto</span>
+            </div>
+          </a>
+        </li>
+
+        <li class="iconHide" #warehouseItem>
+          <a class="nav-link active" aria-disabled="true"  (click)="navigateTo('warehouse')">
+            <div>
+              <i class="fa-solid fa-boxes-stacked"></i>
+              <span>Inventario</span>
+            </div>
+          </a>
+        </li>
+
+        <li class="iconHide" #salesItem>
+          <a class="nav-link active" aria-disabled="true"  (click)="navigateTo('sales')">
+            <div>
+              <i class="fa-solid fa-cash-register"></i>
+              <span>Ventas</span>
+            </div>
+          </a>
+        </li>
+
+        <li class="iconHide" #pricesItem>
+          <a class="nav-link active" aria-disabled="true"  (click)="navigateTo('prices')">
+            <div>
+              <i class="fa-solid fa-money-check-dollar"></i>
+              <span>Precios</span>
+            </div>
+          </a>
+        </li>
+
+        <li class="iconHide" #customersItem>
+          <a class="nav-link active" aria-disabled="true"  (click)="navigateTo('customers')">
+            <div>
+              <i class="fa-solid fa-users"></i>
+              <span>Clientes</span>
+            </div>
+          </a>
+        </li>
+
+        <li #customerItem>
+          <a class="nav-link active" aria-disabled="true"  (click)="navigateTo('customer')">
+            <div>
+              <i class="fa-solid fa-users"></i>
+              <span>Nuevo cliente</span>
+            </div>
+          </a>
+        </li>
+
+        <li class="iconHide" #dashboardsItem>
+          <a class="nav-link active" aria-disabled="true"  (click)="navigateTo('dashboards')">
+            <div>
+              <i class="fa-solid fa-chart-line"></i>
+              <span>Dashboards</span>
+            </div>
+          </a>
+        </li>
+
+        <!-- <li>
+          <a class="nav-link active" aria-disabled="true"  (click)="navigateTo('suscriptions')">
+            <div>
+              <i class="fa-solid fa-bag-shopping"></i>
+              <span>Suscripci&oacute;nes</span>
+            </div>
+          </a>
+        </li>
+        
+        <li>
+          <a class="nav-link active" aria-disabled="true"  (click)="navigateTo('configuration')">
+            <div>
+              <i class="fa-solid fa-gears"></i>
+              <span>Configuraci&oacute;n</span>
+            </div>
+          </a>
+        </li> -->
+
+        <li class="iconShow" #profileItem>
+          <a class="nav-link active" (click)="navigateTo('profile')">
+            <div>
+              <i class="fa-solid fa-user"></i>
+              <span>Perfil</span>
+            </div>
+          </a>
+        </li>
+
+        <!-- <li class="iconShow">
+          <a class="nav-link active" (click)="navigateTo('printer')">
+            <div>
+              <i class="fa-solid fa-printer"></i>
+              <span>Impresora</span>
+            </div>
+          </a>
+        </li> -->
+
+        <li #otherItem>
+          <a class="nav-link active" aria-disabled="false" (click)="navigateTo('other')">
+            <div>
+              <i class="fa-solid fa-circle-info"></i>
+              <span>Acerca de...</span>
+            </div>
+          </a>
+        </li>
+
+        <li class="iconShow">
+          <a class="nav-link active" (click)="logout()">
+            <div>
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <span>Cerrar sesi&oacute;n</span>
+            </div>
+          </a>
+        </li>
+  
+      </ul>
+  
+  </nav>
+</aside>

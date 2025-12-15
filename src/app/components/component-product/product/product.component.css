@@ -1,0 +1,64 @@
+#productGrid {
+    display: grid;
+    grid-template-columns: auto 350px;
+    column-gap: 30px;
+}
+
+#leftGrid{
+    grid-column: 1;
+}
+
+#righGrid{
+    grid-column: 2;
+}
+
+#productImage {
+    width: 350px;
+    height: 310px;
+    border-radius: 4px;
+}
+
+#newImage {
+    margin-top: 20px;
+}
+
+.saveProductBtn {
+	display: ruby-text;
+    text-align: right;
+}
+
+.productBtns {
+    display: grid;
+    grid-template-columns: 150px 150px;
+    column-gap: 20px;
+}
+
+
+@media (max-width: 768px) {
+
+    #productGrid {
+        display: block;
+        justify-content: center;
+        align-content: center;
+    }
+    
+    #productImage {
+        width: 100%;
+        height: 100%;
+    }
+
+    .saveProductBtn{
+        margin-top: 35px;
+        text-align: center;
+        width: 100% !important;
+    }
+
+    #productBtns {
+        width: 100% !important;
+    }
+
+    .MyForm {
+        height: auto !important;
+    }
+    
+}

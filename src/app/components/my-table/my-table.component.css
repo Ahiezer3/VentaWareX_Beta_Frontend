@@ -1,0 +1,114 @@
+
+.buttonsMyTable {
+   padding: 0 !important;
+   margin: 0 !important;
+   display: flex;
+   align-content: center;
+   justify-content: left;
+}
+
+.buttonsMyTable div{
+    padding: 5px;
+    text-align: center;
+}
+
+.MyTableButton {
+    width: 50px;
+    font-size: x-small;
+    border-radius: 5px;
+    text-align: center;
+}
+
+thead tr {
+    border-bottom: 1px solid;
+    text-align: left;
+}
+
+thead th {
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+}
+
+tbody {
+    max-height: 350px;
+    overflow-y: scroll;
+    text-align: left;
+}
+
+#listTable {
+    border-top:  1px solid lightgray !important;
+    border-bottom:  1px solid lightgray !important;
+}
+
+#listTable li {
+   display: grid;
+   grid-template-columns: 70% 30%;
+   padding: 25px;
+   border-bottom: 1px solid lightgray;
+}
+
+#listTable li:hover {
+    background: lightgray;
+}
+
+#listTable ol, ul {
+    padding-left: 0 !important;
+}
+
+#listTable {
+    display: none;
+}
+
+#MyTableDiv {
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    height: calc(100vh - 350px);
+}
+
+#MyTable {
+    display: inline-table;
+}
+
+@media (max-width: 768px) {
+
+    .MyTableButton {
+        height: 40px !important;
+        border-radius: 20px;
+        font-size: 15px;
+        box-shadow:  var(--boxShadowButtonMobile);
+    }
+
+    #MyTableDiv {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        max-height: var(--fullHeightMobile) !important;
+        /* height: auto; */
+        overflow: auto;
+        height: 525px;
+        border: none;
+    }
+
+    #listTable li {
+        padding: 15px;
+    }
+
+    #listTable {
+        display: block;
+        font-size: small !important;
+    }
+
+    #MyTable {
+        display: none;
+    }
+
+    .titleDetail {
+        font-size: medium !important;
+    }
+
+    .buttonsMyTable {
+        justify-content: end;
+     }
+
+}

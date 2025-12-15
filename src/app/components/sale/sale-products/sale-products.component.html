@@ -1,0 +1,235 @@
+<form id="saleComputer" class="MyForm">
+
+    <app-my-header [titlePage]="titlePage" [detailPage]="detailPage"></app-my-header>
+
+    <div class="product-list">
+
+        <div class="mb4">
+
+            <label for="customer-select" class="form-label">Cliente</label>
+
+            <ng-select class="form-select" [(ngModel)]="customerSelect" name="customer" (ngModelChange)="onChangeCustomer($event)">
+                <ng-option *ngFor="let customer of customers" [value]="customer.key">{{customer.customerSelect}}</ng-option>
+            </ng-select>
+        </div>
+
+        <div id="saleGrid">
+
+            <div id="saleLeft">
+
+                <div >
+                    <div class="cart">
+                        <div id="productsDiv">
+        
+                            <table id="MyTable" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                      <th>Productos</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let productSale of sale.details; let i = index">
+                                        <td [ngClass]="{'productSelectedbackground': productSale.quantity > 0}">
+                                            <div>
+                                                <div class="saleProduct">
+                                                    <h5>{{productSale.nameProduct}}</h5>
+                                                </div>
+                                                <div class="saleDetails">
+                                                    <div class="column">
+                                                        <!-- <img src="https://ventawarex.s3.us-west-2.amazonaws.com/agregar-producto.png"> -->
+                                                        <img src="agregar-producto.png">
+                                                    </div>
+                                                    <div  class="saleDetailsColumn">
+                                                        <label>Lista de precio</label>
+                                                        <select class="detail borderDetail" [(ngModel)]="productSale.listSelected" name="listSelected" (ngModelChange)="updatePriceProduct(productSale, i)">
+                                                            <option value="listOne">Lista 1</option>
+                                                            <option value="listTwo">Lista 2</option>
+                                                            <option value="listThree">Lista 3</option>
+                                                            <option value="listFree">Precio libre</option>
+                                                        </select>
+                                                    </div>
+                                                    <div  class="saleDetailsColumn">
+                                                        <label>Precio</label>
+                                                        <input #priceInput type="number" class="detail borderDetail" [(ngModel)]="productSale.price" [ngModelOptions]="{standalone: true}" (ngModelChange)="updateProduct(productSale, i, 'price', 'desktop')" [disabled]="productSale.listSelected !== 'listFree'">
+                                                    </div>
+                                                    <div  class="saleDetailsColumn">
+                                                        <label>Cantidad</label>
+                                                        <div class="detailQuantity">
+                                                            <input #quantityInput type="number" class="detail quantity no-spinner borderDetail" [(ngModel)]="productSale.quantity" [ngModelOptions]="{standalone: true}" (ngModelChange)="updateProduct(productSale, i, 'quantity', 'desktop')" min="0">
+                                                            <button class="quantityButtonIncrease" (click)="quantityIncrease(productSale)">+</button>
+                                                            <button class="quantityButtonDecrease" (click)="quantityDecrease(productSale)">-</button>
+                                                        </div>
+                                                    </div>
+                                                    <div  class="saleDetailsColumn">
+                                                        <label>Envase</label>
+                                                        <div class="detailQuantity">
+                                                            <input #quantityReturnInput type="number" class="detail quantity no-spinner borderDetail" [(ngModel)]="productSale.quantityReturn" [ngModelOptions]="{standalone: true}" (ngModelChange)="updateProduct(productSale, i, 'quantityReturn', 'desktop')" min="0" [disabled]="!productSale.return">
+                                                            <button class="quantityButtonIncrease" *ngIf="productSale.return" (click)="quantityReturnIncrease(productSale)">+</button>
+                                                            <button class="quantityButtonDecrease" *ngIf="productSale.return" (click)="quantityReturnDecrease(productSale)">-</button>
+                                                        </div>
+                                                    </div>
+                                                    <div  class="saleDetailsColumn">
+                                                        <label>Total</label>
+                                                        <output type="text" [value]="productSale.totalFormat" readonly></output>
+                                                    </div>
+                                                </div>
+        
+                                            </div>
+                                        </td>
+                                      </tr>
+                                  </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="saleRight">
+                <div class="summary">
+                    <div><b>Total de productos: </b><span id="total-products">{{sale.totalProducts}}</span></div>
+                    <div><b>Prestamo envase: </b><span id="total-return">{{sale.quantityPackaging}}</span></div>
+                    <div><b>Devolución envase: </b><span id="total-return">{{sale.quantityRefund}}</span></div>
+                    <div><b>Subtotal bruto: </b><span id="subtotal">${{sale.subtotalOriginalFormat}}</span></div>
+                    <div><b>Total prestamo envase: </b><span id="total-return">${{sale.packagingAmountFormat}}</span></div>
+                    <div><b>Total devolución envase: </b><span id="total-return">-${{sale.refundAmountFormat}}</span></div>
+                    <div><b>Subtotal neto: </b><span id="subtotal">${{sale.subtotalFormat}}</span></div>
+                    <div><b>IEPS: </b><span id="taxes">${{sale.iepsFormat}}</span></div>
+                    <div><b>IVA: </b><span id="taxes">${{sale.ivaFormat}}</span></div>
+                    <div><b>Total: </b><span id="total">${{sale.totalFormat}}</span></div>
+                    
+                    <div id="payDiv" class="mb4">
+                        <button id="pay" class="btn btn-primary" (click)="pay()">Guardar</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
+
+<form id="saleMobile" class="MyForm">
+
+    <app-my-header [titlePage]="titlePage" [detailPage]="detailPage"></app-my-header>
+
+    <div class="product-list">
+
+        <div class="mb4">
+
+            <!-- <label for="customer-select" class="form-label">Cliente</label> -->
+
+            <ng-select #customerInput class="form-select" [(ngModel)]="customerSelect" name="customer" (ngModelChange)="onChangeCustomer($event)">
+                <ng-option *ngFor="let customer of customers" [value]="customer.key">{{customer.customerSelect}}</ng-option>
+            </ng-select>
+
+        </div>
+
+
+        <div id="saleGrid">
+
+            <div #saleLeft id="saleLeft">
+                <div class="cart">
+                    <div #productsDiv id="productsDiv">
+                        <table id="MyTable" class="table table-hover">
+                            <tbody>
+                            <tr *ngFor="let productSale of sale.details; let i = index; trackBy: trackByFn">
+                                <td [ngClass]="{'productSelectedbackground': productSale.quantity > 0}">
+                                    <div>
+                                        <div class="saleProduct">
+                                            <h5 class="titleDetail">{{productSale.nameProduct}}</h5>
+                                        </div>
+                                        <div class="saleDetails">
+                                           
+                                            <!-- <div>
+                                                <img src="https://ventawarex.s3.us-west-2.amazonaws.com/agregar-producto.png">
+                                            </div> -->
+
+                                            <div class="saleDetail">
+                                                <div>
+                                                    <label class="detail labelDetail">Lista de precio</label>
+                                                    <select class="detail borderDetail valueDetail" [(ngModel)]="productSale.listSelected" name="listSelected" (ngModelChange)="updatePriceProduct(productSale, i)">
+                                                        <option class="valueDetail" value="listOne">Lista 1</option>
+                                                        <option class="valueDetail" value="listTwo">Lista 2</option>
+                                                        <option class="valueDetail" value="listThree">Lista 3</option>
+                                                        <option class="valueDetail" value="listFree">Precio libre</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label class="detail labelDetail">Precio</label>
+                                                    <input #priceMobileInput type="number" class="detail borderDetail valueDetail" [(ngModel)]="productSale.price" [ngModelOptions]="{standalone: true}" (ngModelChange)="updateProduct(productSale, i, 'price','mobile')" [disabled]="productSale.listSelected !== 'listFree'" step="0.5" min="0.5">
+                                                </div>
+                                                <div>
+                                                    <label class="detail labelDetail">Cantidad</label>
+                                                    <div class="detailQuantity">
+                                                        <input #quantityMobileInput type="number" class="detail quantity no-spinner borderDetail valueDetail" [(ngModel)]="productSale.quantity" [ngModelOptions]="{standalone: true}" (ngModelChange)="updateProduct(productSale, i, 'quantity','mobile')" min="0">
+                                                        <button class="quantityButtonIncrease" (click)="quantityIncrease(productSale)">+</button>
+                                                        <button class="quantityButtonDecrease" (click)="quantityDecrease(productSale)">-</button>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label class="detail labelDetail">Envase</label>
+                                                    <div class="detailQuantity">
+                                                        <input #quantityReturnMobileInput type="number" class="detail quantity no-spinner borderDetail valueDetail" [(ngModel)]="productSale.quantityReturn" [ngModelOptions]="{standalone: true}" (ngModelChange)="updateProduct(productSale, i, 'quantityReturn','mobile')" min="0" [disabled]="!productSale.return">
+                                                        <button class="quantityButtonIncrease" *ngIf="productSale.return" (click)="quantityReturnIncrease(productSale)">+</button>
+                                                        <button class="quantityButtonDecrease" *ngIf="productSale.return" (click)="quantityReturnDecrease(productSale)">-</button>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label class="detail labelDetail">Total</label>
+                                                    <output type="text" class="detail valueDetail" [value]="productSale.totalFormat" readonly></output>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="saleRight">
+                <div>
+
+                    <button class="toggle-btn"><i #toggleBtn (click)="toggleMinimize()" class="fa-regular fa-square-plus"></i>
+                    
+                        <div #minimizedView class="summary minimized">
+
+                            <div><b class="titleDetail">Total de productos: </b><span id="total-products" class="labelDetail">{{sale.totalProducts}}</span></div>
+                            <div><b class="titleDetail">Total: </b><span id="total" class="labelDetail">${{sale.totalFormat}}</span></div>
+
+                        </div>
+
+                        <div #expandedView class="summary expanded">
+
+                            <div><b class="titleDetail">Total de productos: </b><span id="total-products" class="labelDetail">{{sale.totalProducts}}</span></div>
+                            <div><b class="titleDetail">Prestamo envase: </b><span id="total-return" class="labelDetail">{{sale.quantityPackaging}}</span></div>
+                            <div><b class="titleDetail">Devolución envase: </b><span id="total-return" class="labelDetail">{{sale.quantityRefund}}</span></div>
+                            <div><b class="titleDetail">Subtotal bruto: </b><span id="subtotal" class="labelDetail">${{sale.subtotalOriginalFormat}}</span></div>
+                            <div><b class="titleDetail">Total prestamo envase: </b><span id="total-return" class="labelDetail">${{sale.packagingAmountFormat}}</span></div>
+                            <div><b class="titleDetail">Total devolución envase: </b><span id="total-return" class="labelDetail">-${{sale.refundAmountFormat}}</span></div>
+                            <div><b class="titleDetail">Subtotal neto: </b><span id="subtotal" class="labelDetail">${{sale.subtotalFormat}}</span></div>
+                            <div><b class="titleDetail">IEPS: </b><span id="taxes" class="labelDetail">${{sale.iepsFormat}}</span></div>
+                            <div><b class="titleDetail">IVA: </b><span id="taxes" class="labelDetail">${{sale.ivaFormat}}</span></div>
+                            <div><b class="titleDetail">Total: </b><span id="total" class="labelDetail">${{sale.totalFormat}}</span></div>
+
+                        </div>
+                    </button>
+
+                    <div id="payDiv" class="mb4">
+                        <button id="pay" class="btn btn-primary" (click)="pay()">Guardar</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</form>

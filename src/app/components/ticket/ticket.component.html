@@ -1,0 +1,99 @@
+<form id="saleComputer" class="MyForm">
+    <app-my-header [titlePage]="titlePage" [detailPage]="detailPage"></app-my-header>
+    
+    <div class="ticketComponents">
+      <div class="printButton">
+        <button class="btn btn-primary" (click)="printTicket()">Imprimir</button>
+        <button type="button" class="btn btn-warning" (click)="generatePDF()">Descargar</button>
+      </div>
+  
+      <div id="ticket-content" class="ticket" *ngIf="ticketData" #ticket>
+        <div class="headerTicket">
+          <h6>DEPOSITO #22</h6>
+          <small class="address">TARR010311UA9</small><br>
+          <small class="address">PRIVADA ARBOLITO No. 6 </small>
+          <small class="address">TORREON NUEVO </small><br>
+          <small class="address">C.P 58116 MORELIA MICHOACAN</small><br>
+          <small class="address">TEL: 4433489437</small><br><br>
+          <h6>Ticket de venta</h6>
+        </div>
+        <div class="contentTicket">
+          <div id="customerSale">
+            <p><strong>Venta:</strong> {{ticketData.key}}</p>
+            <p><strong>Cliente:</strong> {{ticketData.customer.name}}</p>
+            <p><strong>Fecha:</strong> {{formatDate(ticketData.date)}}</p>
+          </div>
+  
+          <div id="details">
+            <div class="detailsHead">
+              <strong>Cantidad</strong>
+              <strong>Precio</strong>
+              <strong>Importe</strong>
+            </div>
+
+            <div id="items" *ngFor="let item of ticketData.details" class="item">
+              <span><b>{{item.nameProduct}}</b></span>
+              <div class="detailsHead detailsHeadChild">
+                <span class="quantity">{{item.quantity}}</span>
+                <span>{{formatNumber(item.unityTotal)}}</span>
+                <span class="price">{{formatNumber(item.total)}}</span>
+              </div>
+              
+            </div>
+          </div>
+  
+          <div id="summary">
+
+            <div class="summaryDetail">
+              <strong>Prestamo envase:</strong>
+              <div>{{ticketData.quantityPackaging}}</div>
+            </div>
+
+            <div class="summaryDetail">
+              <strong>Devolución envase:</strong>
+              <div>{{ticketData.quantityRefund}}</div>
+            </div>
+
+            <div class="summaryDetail">
+              <strong>Subtotal bruto:</strong>
+              <div>{{formatNumber(ticketData.subtotalOriginal)}}</div>
+            </div>
+
+            <div class="summaryDetail">
+              <strong>Total prestamo envase:</strong>
+              <div>{{formatNumber(ticketData.packagingAmount)}}</div>
+            </div>
+
+            <div class="summaryDetail">
+              <strong>Total devolución envase:</strong>
+              <div>{{formatNumber(ticketData.refundAmount)}}</div>
+            </div>
+
+            <div class="summaryDetail">
+              <strong>Subtotal neto:</strong>
+              <div>{{formatNumber(ticketData.subtotal)}}</div>
+            </div>
+            <div class="summaryDetail">
+              <strong>IEPS:</strong> 
+              <div>{{formatNumber(ticketData.ieps)}}</div>
+            </div>
+            <div class="summaryDetail">
+              <strong>IVA:</strong> 
+              <div>{{formatNumber(ticketData.iva)}}</div>
+            </div>
+            <div class="summaryDetail">
+              <strong>Total:</strong> 
+              <div>{{formatNumber(ticketData.total)}}</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="footerTicket">
+          <p>Gracias por su compra</p>
+          <p><small>Nota: este ticket no es una factura</small></p>
+          <br>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </form>

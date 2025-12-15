@@ -1,0 +1,29 @@
+
+#pricesProductGrid {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 30px;
+}
+
+.saveProductBtn {
+	text-align: right;
+    margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+
+    #pricesProductGrid {
+        display: block;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .saveProductBtn{
+        text-align: center;
+    }
+
+    .MyForm {
+        height: auto !important;
+    }
+    
+}

@@ -1,0 +1,14 @@
+#liveToast {
+    width: 350px;
+}
+
+#liveToastClose {
+   margin-left: 5px;
+   margin-right: 5px;
+   width: 30px;
+}
+
+.toast-body {
+    width: 100% !important;
+    text-align: center;
+}

@@ -1,0 +1,22 @@
+.pagination {
+    --bs-pagination-color: #494949;
+    --bs-pagination-hover-color: #585858;
+    --bs-pagination-active-bg: #585858;
+    --bs-pagination-active-border-color: #585858;
+
+    --bs-pagination-bg: #f3f3f3 !important;
+
+    margin-top: 25px;
+}
+
+.page-link {
+    font-size: small;
+}
+
+
+/* @media (max-width: 768px) {
+
+    #MyPagination {
+        top: calc(100vh - 70px) !important;
+    }
+} */

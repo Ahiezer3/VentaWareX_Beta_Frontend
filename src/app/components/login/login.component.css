@@ -1,0 +1,117 @@
+html {
+    font-family: Helvetica, Arial;
+}
+
+.centerAbsolute {
+    display: flex;
+    position: absolute;
+    top:40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#login{
+	font-family: Helvetica, Arial;
+    width: 380px;
+}
+
+#panel {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    justify-content: center;
+}
+
+#imgDiv {
+    grid-row: 1;
+}
+
+#imgDiv img {
+    width: 100%;
+}
+
+#logoLogin {
+    color: #585858;
+    font-size: 42px;
+	font-weight: bold;
+	align-content: center;
+	text-align: center;
+}
+
+#loginFields {
+    grid-row: 2;
+    display: grid;
+    grid-template-rows: auto auto;
+    row-gap: 15px;
+}
+
+#userDiv, #passwordDiv{
+    display: block;
+}
+
+.label {
+    justify-content: center;
+    line-height: 40px;
+}
+
+#loginButton {
+    width: 100% !important;
+    grid-column: 1;
+    font-weight: 900;
+    background: #496187;
+    color: rgba(248, 248, 255, 0.822);
+    text-align: center;
+}
+
+#loginButton:hover {
+    background: #434b53;
+    color: ghostwhite;
+}
+
+#rememberDiv {
+    grid-column: 2;
+    display: flex;
+    align-items: center; 
+}
+
+#rememberDiv span {
+    margin-left: 5px;
+}
+
+#moreDiv {
+    grid-row: 4;
+}
+
+.linkRegister a {
+    color: #585858;
+    text-decoration: none;
+}
+
+.linkRegister :hover {
+    color: #8b8b8b;
+}
+
+
+.MyForm {
+    height: auto !important;
+    padding-bottom: 25px !important;
+}
+
+#page {
+    background: ghostwhite !important;
+}
+
+@media (max-width: 768px) {
+
+    h4 {
+     font-size: xx-large !important;
+    }
+
+    #login {
+        width: 310px;
+    }
+/* 
+    .MyForm {
+        height: auto !important;
+    } */
+}

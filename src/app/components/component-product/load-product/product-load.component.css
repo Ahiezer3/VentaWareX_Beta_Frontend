@@ -1,0 +1,59 @@
+#forms {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    font-size: smaller;
+}
+
+#divLoadButtonDiv {
+	text-align: right;
+    margin-top: 30px;
+}
+
+#loadBtn {
+    align-self: right;
+} 
+
+#productStock{
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 30px;
+}
+
+#historyLoads {
+    /* margin-top: 25px; */
+}
+
+output {
+    border: none;
+}
+
+@media (max-width: 768px) {
+
+
+    #forms {
+        display: block;
+    }
+
+    #historyLoads {
+        margin-top: 25px;
+    }
+    
+    #productStock {
+        display: block;
+        justify-content: center;
+        align-content: center;
+    }
+
+    #divLoadButtonDiv {
+        text-align: center;
+    }
+
+    #MyTableDiv {
+        /* max-height: 500px; */
+    }
+
+    .MyForm {
+        height: auto !important;
+    }
+}
+

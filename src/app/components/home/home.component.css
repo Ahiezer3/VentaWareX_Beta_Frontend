@@ -1,0 +1,27 @@
+.feature i {
+    font-size: 24px !important;
+}
+
+#contentHome p{
+    text-align: justify;
+}
+
+.MyForm {
+    background: none;
+    padding: 40px;
+}
+
+.row {
+    row-gap: 35px;
+}
+
+.card {
+    height: 200px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    height: auto;
+  }
+
+}

@@ -1,0 +1,23 @@
+
+<div *ngIf="spinnerVisible" class="overlaySpinner">
+    <div id="spinner" class="spinner-border text-light" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<app-modal></app-modal>
+
+<div id="page" #page  [ngClass]="{'fullPage': !showHeaderAndMenu}">
+
+    <app-header *ngIf="showHeaderAndMenu"></app-header>
+    <app-menu *ngIf="showHeaderAndMenu"></app-menu>
+
+    <main id="content" class="MyContent" #content [ngClass]="{'content': showHeaderAndMenu}">
+        <div class="overlay"></div>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+</div>
+
+<app-toast></app-toast>

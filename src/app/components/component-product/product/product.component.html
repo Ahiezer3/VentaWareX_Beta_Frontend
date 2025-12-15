@@ -1,0 +1,120 @@
+<app-tabs-product></app-tabs-product>
+
+<form id="form-product" method = "POST" class="MyForm" [formGroup]="formProduct">
+    <app-my-header [titlePage]="titlePage" [detailPage]="detailPage"></app-my-header>
+      
+    <div class="mb-3">
+        <output id = "sku"><h5>Sku: {{sku}}</h5></output>
+    </div>
+
+    <div id="productGrid">		
+        		
+        <div>
+
+            <div class="myRowForm">
+
+                <div id="nameDiv" class="mb-4">
+                    <label for="name" class="form-label">*Nombre del producto</label>
+                    <input type = "text" id = "name" formControlName="name" class="form-control" data-validation = "alphanumeric" [ngClass]="{'is-invalid': formProduct.get('name')?.invalid && formProduct.get('name')?.touched}" />
+                    <div *ngIf="formProduct.get('name')?.invalid && formProduct.get('name')?.touched" class="invalid-feedback">
+                        <small class="text-danger">El nombre del producto es requerido.</small>
+                    </div>
+                </div>
+
+                <div id="descriptionDiv" class="mb-4">
+                    <label for="description" class="form-label">*Descripci&oacute;n</label>
+                    <input type = "text" id = "description" formControlName="description" class="form-control" [ngClass]="{'is-invalid': formProduct.get('description')?.invalid && formProduct.get('description')?.touched}"/>
+                    <div *ngIf="formProduct.get('description')?.invalid && formProduct.get('description')?.touched" class="invalid-feedback">
+                        <small class="text-danger">La descripción es requerida.</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="myRowForm">
+
+                <div id="providerDiv" class="mb-4">
+                    <label for="provider" class="form-label">*Proveedor</label>
+                    <input type = "text" id = "provider" formControlName="provider" class="form-control" data-validation = "alphanumeric" [ngClass]="{'is-invalid': formProduct.get('provider')?.invalid && formProduct.get('provider')?.touched}"/>
+                    <div *ngIf="formProduct.get('provider')?.invalid && formProduct.get('provider')?.touched" class="invalid-feedback">
+                        <small class="text-danger">El nombre del proveedor es requerido.</small>
+                    </div>
+                </div>
+
+                <div id="patentSKUDiv" class="mb-4">
+                    <label for="providerSku" class="form-label">*SKU Proveedor</label>
+                    <input type = "text" id = "providerSku" formControlName="provider_sku" class="form-control" data-validation = "alphanumeric" [ngClass]="{'is-invalid': formProduct.get('provider_sku')?.invalid && formProduct.get('provider_sku')?.touched}"/>
+                    <div *ngIf="formProduct.get('provider_sku')?.invalid && formProduct.get('provider_sku')?.touched" class="invalid-feedback">
+                        <small class="text-danger">El nombre SKU proveedor es requerido.</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="myRowForm">
+
+                <div id="categoryDiv" class="mb-4">
+                    <label for="category" class="form-label">*Categoria</label>
+                    <select id="category" formControlName="category" class="form-control" [ngClass]="{'is-invalid': formProduct.get('category')?.invalid && formProduct.get('category')?.touched}">
+                        <option id="alcohol" value="alcohol">Alcohol</option>
+                        <option id="dryFood" value="dryFood">Alimento seco</option>
+                        <option id="drink" value="drink">Bebida</option>
+                    </select>
+                    <div *ngIf="formProduct.get('category')?.invalid && formProduct.get('category')?.touched" class="invalid-feedback">
+                        <small class="text-danger">El nombre de la categoria es requerido.</small>
+                    </div>
+                </div>
+
+                <div id="measureDiv" class="mb-4">
+                    <label for="measure" class="form-label">*Unidad de venta</label>
+                    <select id="measure" formControlName="measure" class="form-control" [ngClass]="{'is-invalid': formProduct.get('measure')?.invalid && formProduct.get('measure')?.touched}">
+                        <option id="piece" value="piece">Pieza</option>
+                        <option id="package" value="package">Paquete</option>
+                        <option id="box" value="box">Caja</option>
+                    </select>
+                    <div *ngIf="formProduct.get('measure')?.invalid && formProduct.get('measure')?.touched" class="invalid-feedback">
+                        <small class="text-danger">La unidad de venta es requerida.</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="myRowForm">
+                <div id="quantityDiv" class="mb-4">
+                    <label for="quantity" class="form-label">*Cantidad</label>
+                    <input type = "numeric" id = "quantity" formControlName="quantity" class="form-control" data-validation = "numeric" [ngClass]="{'is-invalid': formProduct.get('quantity')?.invalid && formProduct.get('quantity')?.touched}"/>
+                    <div *ngIf="formProduct.get('quantity')?.invalid && formProduct.get('quantity')?.touched" class="invalid-feedback">
+                        <small class="text-danger">La cantidad es requerida.</small>
+                    </div>
+                </div>
+    
+                <div id="measureDiv" class="mb-4">
+                    <label for="return" class="form-label">*Retornable</label>
+                    <select id="return" formControlName="return" class="form-control">
+                        <option id="true" value="true">Si</option>
+                        <option id="false" value="false">No</option>
+                    </select>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- <div id="imageGrid">
+
+            <div id="productImageDiv">
+                <img id="productImage" title="Imagen del producto" class="" [src]="urlImage"/>
+            </div>
+        </div>   -->
+
+
+    </div>
+
+    <div class="saveProductBtn">
+        <div id="productBtns" [ngClass]="{'productBtns' : productId && productFound}">
+            <input *ngIf="productId && productFound" id="deleteBtn" type = "submit" class="btn btn-danger" value ="Eliminar" (click)="remove();" data-bs-toggle="modal" data-bs-target="#staticBackdrop"/>
+            <input id="saveBtn" type = "submit" class="btn btn-primary" value ="Guardar" (click)="save();" data-bs-toggle="modal" data-bs-target="#staticBackdrop"/>
+        </div>
+    </div>
+</form>
+

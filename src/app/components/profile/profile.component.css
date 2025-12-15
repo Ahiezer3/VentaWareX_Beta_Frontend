@@ -1,0 +1,14 @@
+.MyForm {
+    background: none;
+    padding: 40px;
+}
+
+
+
+@media (max-width:768px){
+
+    .MyForm {
+        height: auto !important;
+    }
+
+}

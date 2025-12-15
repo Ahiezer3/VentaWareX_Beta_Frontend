@@ -1,0 +1,39 @@
+.nav {
+    --bs-nav-link-color: none;
+    --bs-nav-link-hover-color: darkgray;
+    border-bottom: 0px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.nav a {
+    border-radius: 0px;
+}
+
+.nav-tabs {
+    --bs-nav-tabs-link-active-bg: lightgray;
+}
+
+#tabsProduct {
+    margin-bottom: 0px !important;
+}
+
+#tabsProduct li {
+    border: 0;
+    padding: 5px;
+}
+
+.activeTab {
+    border: 0;
+    border-bottom: 2px solid #333;
+    color: #333;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+
+    .nav {
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+}

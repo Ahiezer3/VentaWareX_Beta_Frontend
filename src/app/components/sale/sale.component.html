@@ -1,0 +1,141 @@
+<form id="saleComputer" class="MyForm">
+    
+    <app-my-header [titlePage]="titlePage" [detailPage]="detailPage"></app-my-header>
+    
+    <div class="product-list">
+
+        <div id="saleGrid">
+
+            <div id="saleLeft">
+
+                <div class="mb4">
+
+                    <label for="customer-select" class="form-label">Cliente</label>
+                    
+                    <ng-select class="form-select" [(ngModel)]="customerSelect" name="customer" (ngModelChange)="onChangeCustomer($event)">
+                        <ng-option *ngFor="let customer of customers" [value]="customer.key">{{customer.customerSelect}}</ng-option>
+                    </ng-select>
+                </div>
+
+                <br>
+                <div id="newProduct">
+
+                    <div class="mb4">
+
+                        <label for="product-select" class="form-label">Producto</label>
+
+                        <ng-select class="form-select" [(ngModel)]="productSelect" name="product">
+                            <ng-option *ngFor="let product of products" [value]="product.key">{{product.productSelect}}</ng-option>
+                        </ng-select>
+                    </div>
+
+                    <div class="mb4">
+                        <label for="product-quantity" class="form-label">Cantidad</label>
+                        <input type="number" id="product-quantity" class="form-control" value="1" #productQuantity>
+                    </div>
+
+                    <div id="addProductDiv" class="mb4">
+                        <button id="addProduct" class="btn btn-success" (click)="addProduct()">+</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="saleRight">
+                <div class="summary">
+                    <div><b>Total de Productos: </b><span id="total-products">{{sale.totalProducts}}</span></div>
+                    <div><b>Subtotal: </b><span id="subtotal">${{sale.subtotalFormat}}</span></div>
+                    <div><b>IEPS: </b><span id="taxes">${{sale.iepsFormat}}</span></div>
+                    <div><b>IVA: </b><span id="taxes">${{sale.ivaFormat}}</span></div>
+                    <div><b>Total: </b><span id="total">${{sale.totalFormat}}</span></div>
+
+                    <div id="payDiv" class="mb4">
+                        <button id="pay" class="btn btn-primary" (click)="pay()">Guardar</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div >
+            <div class="cart">
+                <div id="productsDiv">
+                    <app-my-table id="products" [data]="data"></app-my-table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+  
+</form>
+
+<form id="saleMobile" class="MyForm">
+    
+    <app-my-header [titlePage]="titlePage" [detailPage]="detailPage"></app-my-header>
+    
+    <div class="product-list">
+
+        <div class="mb4">
+
+            <label for="customer-select" class="form-label">Cliente</label>
+
+            <ng-select class="form-select" [(ngModel)]="customerSelect" name="customer" (ngModelChange)="onChangeCustomer($event)">
+                <ng-option *ngFor="let customer of customers" [value]="customer.key">{{customer.customerSelect}}</ng-option>
+            </ng-select>
+            
+        </div>
+
+        <br>
+        <div id="newProduct">
+
+            <div class="mb4">
+
+                <label for="product-select" class="form-label">Producto</label>
+                
+                 <ng-select class="form-select" [(ngModel)]="productSelect" name="product">
+                    <ng-option *ngFor="let product of products" [value]="product.key">{{product.productSelect}}</ng-option>
+                </ng-select>
+            </div>
+
+            <div class="mb4">
+                <label for="product-quantity" class="form-label">Cantidad</label>
+                <input type="number" id="product-quantity" class="form-control" value="1" #productQuantity>
+            </div>
+
+            <div id="addProductDiv" class="mb4">
+                <button id="addProduct" class="btn btn-success" (click)="addProduct()">+</button>
+            </div>
+        </div>
+
+        <div id="saleGrid">
+            
+            <div id="saleLeft">
+                <div class="cart">
+                    <div id="productsDiv">
+                        <app-my-table id="products" [data]="data"></app-my-table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="saleRight">
+                <div class="summary">
+                    <div><b>Total de Productos: </b><span id="total-products">{{sale.totalProducts}}</span></div>
+                    <div><b>Subtotal: </b><span id="subtotal">${{sale.subtotalFormat}}</span></div>
+                    <div><b>IEPS: </b><span id="taxes">${{sale.iepsFormat}}</span></div>
+                    <div><b>IVA: </b><span id="taxes">${{sale.ivaFormat}}</span></div>
+                    <div><b>Total: </b><span id="total">${{sale.totalFormat}}</span></div>
+
+                    <div id="payDiv" class="mb4">
+                        <button id="pay" class="btn btn-primary" (click)="pay()">Pagar</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+      
+    </div>
+
+  
+</form>

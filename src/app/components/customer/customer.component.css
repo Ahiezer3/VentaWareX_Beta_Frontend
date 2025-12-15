@@ -1,0 +1,46 @@
+#customerGrid {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 30px;
+}
+
+#leftGrid{
+    grid-column: 1;
+}
+
+#righGrid{
+    grid-column: 2;
+}
+
+.saveCustomerBtn {
+	display: ruby-text;
+    text-align: right;
+}
+
+.customerBtns {
+    display: grid;
+    grid-template-columns: 150px 150px;
+    column-gap: 20px;
+}
+
+@media (max-width:768px){
+
+    #customerGrid {
+        display: block;
+    }
+
+    .saveCustomerBtn{
+        margin-top: 35px;
+        text-align: center;
+        width: 100% !important;
+    }
+
+    #customerBtns {
+        width: 100% !important;
+    }
+
+    .MyForm {
+        height: auto !important;
+    }
+
+}

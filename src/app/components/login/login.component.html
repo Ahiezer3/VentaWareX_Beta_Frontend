@@ -1,0 +1,42 @@
+<div class="centerAbsolute">
+
+    <form id = "login" class="MyForm MyShadow" method="POST">
+
+        <div id="panel">
+      
+            <div id="imgDiv">
+                <div>
+                    <h4 id="logoLogin">VentaWareX</h4>
+                </div>
+            </div>
+        
+            <div id="loginFields">
+                <div id="userDiv">
+                    <input type="text" name="userField" id = "userField" class="form-control" placeholder="Email" [(ngModel)]="email" (ngModelChange)="validateRemember($event);"/>
+                </div>
+
+                <div id="passwordDiv">
+                    <input type="password" name="password-form" id = "passwordField" class="form-control" placeholder="Contraseña" [(ngModel)]="password" (ngModelChange)="validateRemember($event);"/>
+                </div>
+            </div>
+    
+            <div id="loginDiv">
+                <input id="loginButton" type="submit" value="Entrar" class="btn" (click)="login()">
+            </div>
+
+            <div id="rememberDiv">
+                <div>
+                    <input type="checkbox" id="remember" [(ngModel)] ="remember" (ngModelChange)="validateRemember($event);" name="remember"><span>Recordar</span>
+                </div>
+            </div>
+
+            <div id="moreDiv">
+                <small class="linkRegister"><a href="#">Reg&iacute;strate</a></small>
+                <br>
+                <small class="linkRegister"><a href="#">Recuperar acceso</a></small>
+            </div>
+            
+        </div>
+    </form>
+    
+</div>

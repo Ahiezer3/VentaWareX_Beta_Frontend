@@ -1,0 +1,69 @@
+
+
+<div id="MyTableDiv">
+
+    <table id="MyTable" class="table table-striped table-hover MyTable">
+        <thead class="table">
+            <tr>
+                <th *ngFor="let columnName of data.columnNames;">{{columnName}}</th>
+                <th *ngIf="data.key"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of data.rows;">
+                <td *ngFor="let key of data.keys;">
+                    <div (click)="edit(row[data.key])"><span> {{row[key.key]}}</span></div>
+                </td>
+                <td>
+                    <div>
+                        <div class="buttonsMyTable">
+                            <div *ngFor="let button of data.buttons">
+                            
+                                <!-- <button *ngIf="button.type == 'edit'" class="btn btn-primary fa-solid fa-pen-to-square MyTableButton" (click)="edit(row[data.key])" title="Editar"></button> -->
+                            
+                                <button *ngIf="button.type == 'save'" class="btn btn-success fa-solid fa-floppy-disk MyTableButton" (click)="save(row[data.key])" title="Guardar"></button>
+                        
+                                <button *ngIf="button.type == 'delete'" class="btn btn-danger fa-regular fa-trash-can MyTableButton" (click)="delete(row[data.key])" title="Borrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <ul id="listTable">
+
+            <li *ngFor="let row of data.rows;">
+                <!-- <div><div></div></div> -->
+                <div>
+                    <div *ngFor="let key of data.keys; let i = index;">
+                        <div (click)="edit(row[data.key])">
+                            <span *ngIf="i!=0" [ngClass]="{'labelDetail': i != 0}"><b> {{key.columnName}}:</b></span> 
+                            <span *ngIf="i==0" [ngClass]="{'titleDetail': i == 0}"><b> {{row[key.key]}}</b></span> 
+                            <span *ngIf="i!=0" [ngClass]="{'valueDetail': i != 0}"> {{row[key.key]}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="buttonsMyTable">
+                        <div *ngFor="let button of data.buttons">
+                        
+                            <!-- <button *ngIf="button.type == 'edit'" class="btn btn-primary fa-solid fa-pen-to-square MyTableButton" (click)="edit(row[data.key])" title="Editar"></button> -->
+                        
+                            <button *ngIf="button.type == 'save'" class="btn btn-success fa-solid fa-floppy-disk MyTableButton" (click)="save(row[data.key])" title="Guardar"></button>
+                    
+                            <button *ngIf="button.type == 'delete'" class="btn btn-danger fa-regular fa-trash-can MyTableButton" (click)="delete(row[data.key])" title="Borrar" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+    
+    </ul>
+
+    <p *ngIf="data.rows.length === 0">Datos no disponibles</p>
+</div>

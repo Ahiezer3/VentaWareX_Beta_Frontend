@@ -1,0 +1,131 @@
+<div id="contentHome" class="MyForm">
+  
+    <div class="card">
+
+      <div class="card-body center">
+
+        <form class="MyForm" method = "POST" [formGroup]="profileForm">
+
+          <app-my-header [titlePage]="titlePage" [detailPage]="detailPage"></app-my-header>
+            
+              <div>
+      
+                  <div class="myRowForm">
+
+                    <div id="nameDiv" class="mb-4">
+                        <label for="user" class="form-label">*Nombre de usuario</label>
+                        <input type = "text" id = "user" class="form-control" formControlName="user" [ngClass]="{'is-invalid': profileForm.get('user')?.invalid && profileForm.get('user')?.touched}">
+                    
+                        <div *ngIf="profileForm.get('user')?.invalid && profileForm.get('user')?.touched" class="invalid-feedback">
+                            <small class="text-danger">El nombre de usuario es requerido.</small>
+                        </div>
+                    </div>
+
+                    <div id="birthdayDiv" class="mb-4">
+                        <label for="birthday" class="form-label">*Fecha de nacimiento</label>
+                        <input type = "date" id = "birthday" class="form-control" formControlName="birthday" [ngClass]="{'is-invalid': profileForm.get('birthday')?.invalid && profileForm.get('birthday')?.touched}">
+                    
+                        <div *ngIf="profileForm.get('birthday')?.invalid && profileForm.get('birthday')?.touched" class="invalid-feedback">
+                            <small class="text-danger">La fecha de nacimiento es requerida.</small>
+                        </div>
+                    </div>
+
+                  </div>
+
+
+                  <div class="myRowForm">
+      
+                    <div id="nameDiv" class="mb-4">
+                        <label for="name" class="form-label">*Nombre</label>
+                        <input type = "text" id = "name" class="form-control" formControlName="name" [ngClass]="{'is-invalid': profileForm.get('name')?.invalid && profileForm.get('name')?.touched}">
+                    
+                        <div *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched" class="invalid-feedback">
+                            <small class="text-danger">El nombre es requerido.</small>
+                        </div>
+                    </div>
+
+                    <div id="lastNameDiv" class="mb-4">
+                      <label for="lastName" class="form-label">*Apellido paterno</label>
+                      <input type = "text" id = "lastName" class="form-control" formControlName="lastName" [ngClass]="{'is-invalid': profileForm.get('lastName')?.invalid && profileForm.get('lastName')?.touched}">
+                  
+                      <div *ngIf="profileForm.get('lastName')?.invalid && profileForm.get('lastName')?.touched" class="invalid-feedback">
+                          <small class="text-danger">El apellido paterno es requerido.</small>
+                      </div>
+                    </div>
+
+                    <div id="mothersLastNameDiv" class="mb-4">
+                      <label for="mothersLastName" class="form-label">*Apellido materno</label>
+                      <input type = "text" id = "mothersLastName" class="form-control" formControlName="mothersLastName" [ngClass]="{'is-invalid': profileForm.get('mothersLastName')?.invalid && profileForm.get('mothersLastName')?.touched}">
+                  
+                      <div *ngIf="profileForm.get('mothersLastName')?.invalid && profileForm.get('mothersLastName')?.touched" class="invalid-feedback">
+                          <small class="text-danger">El apellido materno es requerido.</small>
+                      </div>
+                    </div>
+      
+                  </div>
+
+                  <div class="myRowForm">
+
+                    <div id="addressDiv" class="mb-4">
+                      <label for="address" class="form-label">Dirección</label>
+                      <input type = "text" id = "address" formControlName="address" class="form-control">
+                    </div>
+
+                  </div>
+
+                  <div class="myRowForm">
+
+                    <div id="zipCodeDiv" class="mb-4">
+                      <label for="zipCode" class="form-label">Código postal</label>
+                      <input type = "number" id = "zipCode" formControlName="zipCode" class="form-control">
+                    </div>
+
+                    <div id="countryDiv" class="mb-4">
+                      <label for="country" class="form-label">País</label>
+                      <input type = "text" id = "country" formControlName="country" class="form-control">
+                    </div>
+
+                    <div id="emailDiv" class="mb-4">
+                      <label for="email" class="form-label">Email</label>
+                      <input type = "email" id = "email" formControlName="email" class="form-control" disable="disable">
+                    </div>
+
+                    <div id="phoneNumberDiv" class="mb-4">
+                      <label for="phoneNumber" class="form-label">Número de teléfono</label>
+                      <input type = "phoneNumber" id = "phoneNumber" formControlName="phoneNumber" class="form-control">
+                    </div>
+
+                  </div>
+                  
+                  <div class="myRowForm">
+      
+                    <div id="firstPasswordDiv" class="mb-4">
+                      <label for="firstPassword" class="form-label">Contraseña</label>
+                      <input type = "password" id = "firstPassword" [(ngModel)]="firstPassword" name="firstPassword" (ngModelChange)="validatePassword()" class="form-control" formControlName="firstPassword" [ngClass]="{'is-invalid':passwordDiferences == true}">
+                  
+                      <div *ngIf="passwordDiferences == true" class="invalid-feedback">
+                          <small class="text-danger">Las contraseñas no coinciden.</small>
+                      </div>
+                    </div>
+
+                    <div id="secondPasswordNameDiv" class="mb-4">
+                      <label for="secondPassword" class="form-label">Repetir contraseña</label>
+                      <input type = "password" id = "secondPassword" [(ngModel)]="secondPassword" name="secondPassword" (ngModelChange)="validatePassword()" class="form-control" formControlName="secondPassword" [ngClass]="{'is-invalid': passwordDiferences == true}">
+                  
+                      <div *ngIf="passwordDiferences == true" class="invalid-feedback">
+                          <small class="text-danger">Las contraseñas no coinciden.</small>
+                      </div>
+                    </div>
+      
+                  </div>
+              </div>
+
+               <div class="saveProfileBtn">
+                  <div id="profileBtns">
+                      <input id="saveBtn" type = "submit" class="btn btn-primary" value ="Guardar" data-bs-toggle="modal" data-bs-target="#staticBackdrop"/>
+                  </div>
+              </div>
+            </form>
+      </div>
+    </div>
+</div>

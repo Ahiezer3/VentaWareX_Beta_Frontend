@@ -1,0 +1,30 @@
+
+<header id="navBar" class="MyShadow">
+    <nav>
+        <div id="logo">
+            <button id="circleMenu" class="iconMenu" (click)="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <button id="toHome" (click)="navigateTo('/index')"><h4>VentaWareX</h4></button>
+        </div>
+        
+        <div id="moreMenu" class="dropdown">
+            <button id="circleMoreMenu" class="iconMenu" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical">
+            </i></button>
+            
+            <ul class="dropdown-menu" aria-labelledby="circleMoreMenu">
+                <li><a class="dropdown-item" (click)="navigateTo('profile')">Perfil</a></li>
+                <li><a class="dropdown-item" (click)="logout()">Cerrar sesi&oacute;n</a></li>
+            </ul>
+        </div>
+
+    </nav>
+    <div class="mobileIconsNav">
+        <button #saleProducts title="Nueva venta" (click)="navigateTo('saleProducts')"><i class="fa-solid fa-cart-shopping"></i></button>
+        <button #sales title="Ventas" (click)="navigateTo('sales')"><i class="fa-solid fa-cash-register"></i></button>
+        <button #warehouse title="Inventario" (click)="navigateTo('warehouse')"><i class="fa-solid fa-boxes-stacked"></i></button>
+        <button #prices title="Precios" (click)="navigateTo('prices')"><i class="fa-solid fa-money-check-dollar"></i></button>
+        <button #customers title="Clientes" (click)="navigateTo('customers')"><i class="fa-solid fa-users"></i></button>
+        <button #dashboards title="Dashboards" (click)="navigateTo('dashboards')"><i class="fa-solid fa-chart-line"></i></button>
+    </div>
+</header>

@@ -1,0 +1,156 @@
+.ticket {
+    color: #000;
+    font-size: 16px;
+    /* font-family: 'Courier New'; */
+    width: 2.5in; /* Tamaño del papel en pulgadas */
+    padding: 15px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    margin: 0 auto;
+  }
+  
+  .headerTicket, .footerTicket {
+    text-align: center;
+  }
+  
+  .headerTicket {
+    padding-bottom: 0.2in;
+    padding-top: 0.2in;
+  }
+  
+  .address {
+    font-size: xx-small;
+  }
+
+  .footerTicket {
+    margin-top: 0.1in;
+  }
+
+  .footerTicket p {
+    font-size: xx-small;
+  }
+  
+  .contentTicket {
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #000;
+  }
+  
+  p {
+    margin: 0;
+    line-height: 1.4;
+  }
+  
+  strong {
+    font-weight: bold;
+  }
+  
+  #customerSale {
+    font-size: x-small;
+  }
+
+  #items {
+    padding-top: 5px;
+  }
+
+  .item {
+    display: grid;
+    justify-content: space-between;
+    padding-bottom: 5px;
+
+    font-size: x-small;
+  }
+  
+  .item:last-of-type {
+    border-bottom: none;
+  }
+  
+  .item-name {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .item-price {
+    text-align: right;
+  }
+  
+  .total-section {
+    margin-top: 0.2in;
+    font-weight: bold;
+    border-top: 1px solid #ddd;
+    padding-top: 0.1in;
+    text-align: right;
+  }
+  
+  .total-section p {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  #details, #summary {
+    margin-top: 10px;
+  }
+
+  .detailsHead {
+    display: grid;
+    grid-template-columns: 70px 45px 60px;
+    column-gap: 15px;
+
+    font-size: x-small;
+  }
+
+  .quantity {
+    margin-left: 15px;
+  }
+
+  .summaryDetail {
+    display: grid;
+    grid-template-columns: 130px 50px;
+    column-gap: 15px;
+
+    font-size: x-small;
+  }
+
+  .quantityPackaging, .quantityRefund {
+    font-size: x-small;
+  }
+
+  .printButton {
+    text-align: end;
+    display: flex;
+    column-gap: 25px !important;
+  }
+
+  .ticketComponents {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  @media print {
+    .ticket {
+      border: none;
+      box-shadow: none;
+
+    }
+
+    .headerTicket {
+      padding-bottom: 0.2in;
+      padding-top: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .ticket {
+      margin-top: 25px;
+    }
+
+    .ticketComponents {
+      flex-flow: column-reverse;
+    }
+
+    form {
+      background: none!important;
+    }
+  }
+  

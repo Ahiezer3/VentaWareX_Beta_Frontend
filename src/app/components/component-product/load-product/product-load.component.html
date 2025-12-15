@@ -1,0 +1,101 @@
+<app-tabs-product></app-tabs-product>
+
+<div id="forms">
+    <form id="form-loadProduct" method = "POST" class="MyForm" [formGroup]="loadProductForm">
+        <app-my-header [titlePage]="titlePage" [detailPage]="detailPage"></app-my-header>
+
+        <div id="productStock2">
+
+            <div class="myRowForm">
+                <div id="currentStockLabelDiv" class="mb-4">
+                    <label for="currentStockLabel" class="form-label">Existencia actual</label>
+                    <output id = "currentStockLabel" class="form-control">{{currentStock}}</output>
+                </div>
+
+                <div id="currentStockReturnLabelDiv" class="mb-4">
+                    <label for="currentStockReturnLabel" class="form-label">Existencia actual envase</label>
+                    <output id = "currentStockReturnLabel" class="form-control">{{currentStockReturn}}</output>
+                </div>
+            </div>
+
+            <div>
+
+                <div class="myRowForm">
+
+                    <div id="loadToDiv" class="mb-4" *ngIf="isReturn">
+                        <label for="loadTo" class="form-label" *ngIf="isReturn">*Cargar a</label>
+                        <select id="loadTo" class="form-control" formControlName="loadTo" *ngIf="isReturn" (change)="onLoadToChange($event)">
+                            <option id="product" value="product">Producto</option>
+                            <option id="returnProduct" value="returnProduct">Envase</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="myRowForm">
+                
+                    <div id="loadTypeDiv" class="mb-4">
+                        <label for="loadType" class="form-label">*Tipo de carga</label>
+                        <select #loadType id="loadType" class="form-control" formControlName="loadType" (change)="onQuantityLoadChange($event)" [ngClass]="{'is-invalid': loadProductForm.get('loadType')?.invalid && loadProductForm.get('loadType')?.touched}">
+                            <option id="increase" value="increase">Entrada</option>
+                            <option id="decrease" value="decrease">Salida</option>
+                        </select>
+        
+                        <div *ngIf="loadProductForm.get('loadType')?.invalid && loadProductForm.get('loadType')?.touched" class="invalid-feedback">
+                            <small class="text-danger">El tipo de carga es requerido.</small>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="myRowForm">
+                    <div id="dateLoadDiv" class="mb-4">
+                        <label for="dateLoad" class="form-label">Fecha de carga</label>
+                        <input type = "date" id = "dateLoad" class="form-control" disable="disable" data-validation = "numeric" formControlName="dateLoad"  [ngClass]="{'is-invalid': loadProductForm.get('dateLoad')?.invalid && loadProductForm.get('dateLoad')?.touched}"/>
+                        <div *ngIf="loadProductForm.get('dateLoad')?.invalid && loadProductForm.get('dateLoad')?.touched" class="invalid-feedback">
+                            <small class="text-danger">La fecha de carga es requerida.</small>
+                        </div>
+                    </div>
+
+                    <div id="quantityLoadDiv" class="mb-4">
+                        <label for="quantityLoad" class="form-label">*Cantidad de carga</label>
+                        <input type = "numeric" id = "quantityLoad" class="form-control" data-validation = "numeric" formControlName="quantityLoad"  [ngClass]="{'is-invalid': loadProductForm.get('quantityLoad')?.invalid && loadProductForm.get('quantityLoad')?.touched}" (input)="onQuantityLoadChange($event)" />
+                        
+                        <div *ngIf="loadProductForm.get('quantityLoad')?.invalid && loadProductForm.get('quantityLoad')?.touched" class="invalid-feedback">
+                            <small class="text-danger">La cantidad de carga es requerida.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="myRowForm">
+                    
+                    <div id="newQuantityLoadDiv" class="mb-4">
+                        <label for="newQuantityLoad" class="form-label">Nueva existencia</label>
+                        <input type = "numeric" id = "newQuantityLoad" class="form-control" data-validation = "numeric" formControlName="newQuantityLoad"/>
+                    </div>
+
+                    <div id="commentsLoadDiv" class="mb-4">
+                        <label for="commentsLoad" class="form-label">Comentarios</label>
+                        <textarea id = "commentsLoad" class="form-control" formControlName="commentsLoad"></textarea>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="divLoadButtonDiv">
+            <input type="submit" id="saveBtn" class="btn btn-primary" value ="Guardar" data-bs-toggle="modal" data-bs-target="#staticBackdrop"/>
+        </div>      
+        
+    </form>
+
+    <form id="historyLoads" class="MyForm">
+        <h3>Historial de cargas</h3>
+        <div id="MyTableDiv">
+            <app-my-table [data]="dataLoads"></app-my-table>
+            <app-pagination></app-pagination>
+        </div>
+    </form>
+
+</div>

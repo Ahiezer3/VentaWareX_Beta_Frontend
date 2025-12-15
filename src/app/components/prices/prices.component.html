@@ -1,0 +1,12 @@
+<div class="MyForm">
+    <app-my-header [titlePage]="titlePage" [detailPage]="detailPage"></app-my-header>
+
+    <div class="mb4 divAddNew addNewItemDiv">
+        <button id="addSale" class="btn btn-success buttonAddNew" (click)="navigateTo('product')">{{addNewItemText}}</button>
+    </div>
+
+    <div id="MyTableDiv">
+        <app-my-table [data]="data"></app-my-table>
+        <app-pagination id="MyPagination"></app-pagination>
+    </div>
+</div>

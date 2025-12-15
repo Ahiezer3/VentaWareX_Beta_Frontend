@@ -1,0 +1,26 @@
+#contentHeader {
+	display: block;
+	align-items: center;
+	width: 100%;
+}
+
+#contentHeaderTitle {
+	margin-bottom: 20px !important;
+    padding-bottom: 10px !important;
+	border-radius: 4px 4px 4px 4px;
+}
+
+#contentHeaderDescription {
+	margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+
+	#contentHeaderTitle {
+		margin-bottom: 0px !important;
+	}
+
+	#contentHeaderDescription {
+		display: none;
+	}
+}

@@ -1,0 +1,22 @@
+
+#errorMessage {
+    padding: 150px;
+}
+
+#errorMessage div {
+   text-align: left;
+   justify-content: center;
+   align-items: center;
+}
+
+#errorMessage div i {
+    font-size: xx-large;
+}
+
+#retry {
+    display: inline-flex;
+}
+
+.fullPage {
+    background: ghostwhite !important;
+}

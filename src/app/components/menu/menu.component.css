@@ -1,0 +1,113 @@
+#menu {
+	background-color: var(--backgroundMenu); 
+	font-family: "Nunito Sans", "Helvetica","Arial";
+	font-size: 16px;
+	max-width: 250px;
+	height: 100%;
+	z-index: 9999;
+}
+
+#menu ul {
+	margin-top: 70px;
+}
+
+#menu li {
+	margin-top: 5px; 
+	text-align: left;
+	padding-left: 10px;
+	width: 100%;
+	--bs-nav-link-color: var(--navLinkColorMenu);
+    --bs-nav-link-disabled-color: #918f8f;
+	--bs-nav-link-hover-color: #f3f4f5;
+}
+
+#menu li ul {
+	margin-top: 0;
+}
+
+#menu li ul li {
+	margin-top: 0;
+}
+
+#menu li:hover { 
+	background: #747575;
+}
+
+.fa-solid{
+	align-self: center;
+	color: black;
+}
+
+#menu li a div {
+	display: grid;
+	grid-template-columns: 20px 200px;
+	column-gap: 10px;
+}
+
+#menu li a div i {
+	grid-column: 1;
+	align-self: center;
+}
+
+#menu li a div span {
+	grid-column: 2;
+}
+
+#menu i {
+	text-align: center;
+}
+
+.MyMenu {
+    position: fixed;
+	left: 0; 
+	top: 0;
+    overflow-x: hidden;
+    transition: left 0.3s ease;
+}
+
+.MyMenu.open {
+	left: -350px;
+}
+
+.iconShow {
+	display: none;
+}
+
+.itemSelected {
+	background-color: #ccc !important;
+}
+
+@media (max-width: 768px) {
+
+	#menu {
+		width: 95% !important;
+		max-width: 100% !important;
+		margin-top: 40px;
+		z-index: 99991;
+		background: #fff;
+	}
+
+	#menu ul {
+		margin-top: 20px;
+	}
+
+	#menu i {
+		font-size: var(--sizeIcons) !important;
+	}
+
+	.MyMenu {
+		left: -95%; 
+	}
+	
+	.MyMenu.open {
+		left: 0; 
+	}
+
+	.iconHide {
+		display: none;
+	}
+
+	.iconShow {
+		display: block;
+	}
+}

@@ -1,0 +1,99 @@
+<form class="MyForm" method = "POST" [formGroup]="customerForm">
+    
+    <app-my-header [titlePage]="titlePage" [detailPage]="detailPage"></app-my-header>
+    	
+        <div>
+
+            <div class="myRowForm">
+
+                <div id="nameDiv" class="mb-4">
+                    <label for="name" class="form-label">*Nombre del cliente</label>
+                    <input type = "text" id = "name" class="form-control" formControlName="name" [ngClass]="{'is-invalid': customerForm.get('name')?.invalid && customerForm.get('name')?.touched}">
+                
+                    <div *ngIf="customerForm.get('name')?.invalid && customerForm.get('name')?.touched" class="invalid-feedback">
+                        <small class="text-danger">El nombre del cliente es requerido.</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="myRowForm">
+
+                <div id="lastNameDiv" class="mb-4">
+                    <label for="lastName" class="form-label">*Apellido Paterno</label>
+                    <input type = "text" id = "lastName" class="form-control" formControlName="lastName" [ngClass]="{'is-invalid': customerForm.get('lastName')?.invalid && customerForm.get('lastName')?.touched}"/>
+                
+                    <div *ngIf="customerForm.get('lastName')?.invalid && customerForm.get('lastName')?.touched" class="invalid-feedback">
+                        <small class="text-danger">El apellido paterno es requerido.</small>
+                    </div>
+                </div>
+
+                <div id="mothersLastNameDiv" class="mb-4">
+                    <label for="mothersLastName" class="form-label">*Apellido Materno</label>
+                    <input type = "text" id = "mothersLastName" class="form-control" formControlName="mothersLastName" [ngClass]="{'is-invalid': customerForm.get('mothersLastName')?.invalid && customerForm.get('mothersLastName')?.touched}"/>
+                
+                    <div *ngIf="customerForm.get('mothersLastName')?.invalid && customerForm.get('mothersLastName')?.touched" class="invalid-feedback">
+                        <small class="text-danger">El apellido materno es requerido.</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="myRowForm">
+
+                <div id="addressDiv" class="mb-4">
+                    <label for="address" class="form-label">*Dirección</label>
+                    <input type = "text" id = "address" class="form-control" formControlName="address" [ngClass]="{'is-invalid': customerForm.get('address')?.invalid && customerForm.get('address')?.touched}"/>
+                
+                    <div *ngIf="customerForm.get('address')?.invalid && customerForm.get('address')?.touched" class="invalid-feedback">
+                        <small class="text-danger">La dirección es requerida.</small>
+                    </div>
+                </div>
+
+                <div id="zipCodeDiv" class="mb-4">
+                    <label for="zipCode" class="form-label">*Código postal</label>
+                    <input type = "numeric" id = "zipCode" class="form-control" formControlName="zipCode" [ngClass]="{'is-invalid': customerForm.get('zipCode')?.invalid && customerForm.get('zipCode')?.touched}"/>
+                
+                    <div *ngIf="customerForm.get('zipCode')?.invalid && customerForm.get('zipCode')?.touched" class="invalid-feedback">
+                        <small class="text-danger">El código postal es requerido.</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="myRowForm">
+
+                <div id="phoneNumberDiv" class="mb-4">
+                    <label for="phoneNumber" class="form-label">*Número de teléfono</label>
+                    <input type = "numeric" id = "phoneNumber" class="form-control" formControlName="phoneNumber" [ngClass]="{'is-invalid': customerForm.get('phoneNumber')?.invalid && customerForm.get('phoneNumber')?.touched}"/>
+                    
+                    <div *ngIf="customerForm.get('phoneNumber')?.invalid && customerForm.get('phoneNumber')?.touched" class="invalid-feedback">
+                        <small class="text-danger">El número de teléfono es requerido.</small>
+                    </div>
+                </div>
+
+                <div id="listPriceDiv" class="mb-4">
+                    <label for="listPrice" class="form-label">*Lista de precios</label>
+                    <select id="listPrice" class="form-control" formControlName="listPrice" [ngClass]="{'is-invalid': customerForm.get('listPrice')?.invalid && customerForm.get('listPrice')?.touched}">
+                        <option id="listOne" value="listOne">Lista 1</option>
+                        <option id="listTwo" value="listTwo">Lista 2</option>
+                        <option id="listThree" value="listThree">Lista 3</option>
+                    </select>
+
+                    <div *ngIf="customerForm.get('listPrice')?.invalid && customerForm.get('listPrice')?.touched" class="invalid-feedback">
+                        <small class="text-danger">La lista de precios es requerida.</small>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+    
+    <div class="saveCustomerBtn">
+        <div id="customerBtns" [ngClass]="{'customerBtns' : customerId && customerFound}">
+            <input *ngIf="customerId && customerFound" id="deleteBtn" type = "submit" class="btn btn-danger" value ="Eliminar" (click)="remove();" data-bs-toggle="modal" data-bs-target="#staticBackdrop"/>
+            <input id="saveBtn" type = "submit" class="btn btn-primary" value ="Guardar" (click)="saveAction();" data-bs-toggle="modal" data-bs-target="#staticBackdrop"/>
+        </div>
+    </div>
+
+</form>

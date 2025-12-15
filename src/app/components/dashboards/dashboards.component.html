@@ -1,0 +1,111 @@
+<form class="MyForm myDashboard">
+
+    <div id="salesSummary">
+        <div id="totalSummaryToday" class="saleSummary">
+            <h4>Venta total del día</h4>
+            <div>
+                <div class="mb-4">
+                    <h1>{{totalSummaryToday}}</h1>
+                    <h4>Ganancia: {{totalGainSummaryToday}}</h4>
+                </div>
+            </div>
+        </div>
+
+        <div id="totalSummaryMonth" class="saleSummary">
+            <h4>Venta total del mes</h4>
+            <div>
+                <div class="mb-4">
+                    <h1>{{totalSummaryMonth}}</h1>
+                    <h4>Ganancia: {{totalGainSummaryMonth}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="salesSummary">
+        <div>
+            <h4>Venta diaria en el mes</h4>
+            <div id="totalByDayCurrentMonthInput">
+                <div class="mb-4">
+                    <label for="monthTotalByDayCurrentMonth" class="form-label">Mes:</label>
+                    <select #monthTotalByDayCurrentMonth id="monthTotalByDayCurrentMonth"  class="form-control" (change)="loadTotalByDayCurrentMonth()">
+                        <option value="1">Enero</option>
+                        <option value="2">Febrero</option>
+                        <option value="3">Marzo</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Mayo</option>
+                        <option value="6">Junio</option>
+                        <option value="7">Julio</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Deciembre</option>
+                    </select>
+                </div>
+            </div> 
+            <div class="scroll-container" class="saleSummary">
+                <canvas id="totalByDayCurrentMonth">{{totalByDayCurrentMonth}}</canvas>
+            </div>
+            
+        </div>
+        
+        <div id="totalByDayByDateRangeDiv">
+            <div>
+                <h4>Venta por fecha</h4>
+                <div id="totalByDayByDateRangeInput">
+                    <div class="mb-4">
+                        <label for="startTotalByDayByDateRange" class="form-label">De:</label>
+                        <input type="date" #startTotalByDayByDateRange id="startTotalByDayByDateRange"  class="form-control" (change)="loadTotalByDayByDateRange()">
+                    </div>
+                    <div class="mb-4">
+                        <label for="endTotalByDayByDateRange" class="form-label">A:</label>
+                        <input type="date" #endTotalByDayByDateRange id="endTotalByDayByDateRange" class="form-control" (change)="loadTotalByDayByDateRange()">
+                    </div>
+                </div>
+                <div class="scroll-container" class="saleSummary">
+                    <canvas id="totalByDayByDateRange">{{totalByDayByDateRange}}</canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="salesSummary">
+      
+        <div>
+            <div>
+                <h4>Venta mensual en el año</h4>
+                <div id="totalByDayCurrentMonthInput">
+                    <div class="mb-4">
+                        <label for="yearTotalByMonthForYear" class="form-label">Año:</label>
+                        <select [(ngModel)]="yearTotalByMonthForYear" name="yearTotalByMonthForYear" id="yearTotalByMonthForYear"  class="form-control" (change)="loadTotalByMonthForYear()">
+                            <option *ngFor="let year of yearsFilter;" [value]="year">{{year}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-container" class="saleSummary">
+                <canvas id="totalByMonthForYear">{{totalByMonthForYear}}</canvas>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h4>Ganancia mensual en el año</h4>
+                <div id="totalByDayCurrentMonthInput">
+                    <div class="mb-4">
+                        <label for="yearTotalByMonthForYear" class="form-label">Año:</label>
+                        <select [(ngModel)]="yearTotalByMonthForYear" name="yearTotalByMonthForYear" id="yearTotalByMonthForYear"  class="form-control" (change)="loadTotalByMonthForYear()">
+                            <option *ngFor="let year of yearsFilter;" [value]="year">{{year}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-container" class="saleSummary">
+                <canvas id="totalByMonthForYearGain">{{totalByMonthForYearGain}}</canvas>
+            </div>
+        </div>
+    </div>
+ 
+    <small class="labelDetail">*Los totales incluyen ventas con impuestos, descuentos e importes.</small>
+</form>
