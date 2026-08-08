@@ -1,6 +1,6 @@
 
 export interface ProductModel {
-    key: number | null
+    key: string | null
     name: string | null;
     description: string | null;
     provider: string | null;
@@ -9,7 +9,7 @@ export interface ProductModel {
     measure: string | null;
     quantity: number | null;
     image: string | null;
-    keyWarehouse: number | null;
+    keyWarehouse: string | null;
     currentStock: number | null;
     currentStockReturn: number | null;
     isReturn: boolean;

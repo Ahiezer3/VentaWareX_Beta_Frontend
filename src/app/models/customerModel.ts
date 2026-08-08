@@ -1,7 +1,7 @@
 import { MyModel } from "./myModel";
 
 export interface CustomerModel extends MyModel{
-    key: number;
+    key: string;
     name: string;
     lastName: string;
     mothersLastName: string;
@@ -10,5 +10,5 @@ export interface CustomerModel extends MyModel{
     phoneNumber: string;
     listPrice: string;
     rfc: string;
-    keyBusiness:number;
+    keyBusiness: string;
 }

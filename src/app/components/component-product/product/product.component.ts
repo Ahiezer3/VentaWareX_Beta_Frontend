@@ -29,7 +29,7 @@ export class ProductComponent {
 
   titlePage ="Datos del producto";
   detailPage = "Registre los datos del producto, cree o edite la información requerida";
-  productId: number | undefined;
+  productId: string | undefined;
   productFound = false;
   sku = "";
   urlImage = "https://ventawarex.s3.us-west-2.amazonaws.com/agregar-producto.png";
@@ -58,8 +58,7 @@ export class ProductComponent {
     this.spinnerService.hide();
 
     this.activatedRoute.paramMap.pipe(takeUntil(this.distroySuscriptions$)).subscribe(params => {
-      const id = params.get('id');
-      this.productId = id ? parseInt(id) : undefined;
+      this.productId = params.get('id') ?? undefined;
     });
 
     this.modalService.confirmEvent$.pipe(takeUntil(this.distroySuscriptions$)).subscribe(() => {
@@ -164,7 +163,7 @@ export class ProductComponent {
     
     let product: ProductModel = this.formProduct.value as ProductModel;
     product.key = this.productId!;
-    product.keyWarehouse = 0;
+    product.keyWarehouse = "0";
     product.currentStock = 0;
 
     product.isReturn = this.toolService.stringToBoolean(this.formProduct.value.isReturn);
@@ -202,7 +201,7 @@ export class ProductComponent {
 
   }
 
-  update(productId:number, product:ProductModel) {
+  update(productId: string | number, product:ProductModel) {
     
     this.productService.update(productId,product).pipe(takeUntil(this.distroySuscriptions$)).subscribe({
       next: res => {

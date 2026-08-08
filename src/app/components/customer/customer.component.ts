@@ -23,7 +23,7 @@ export class CustomerComponent extends MyCRUD<CustomerModel>{
   detailPage = "Crea o edita un cliente.";
   customerForm: FormGroup = this.formBuilder.group({});
 
-  customerId: number | undefined;
+  customerId: string | undefined;
   customerFound = false;
   removeCustomerPressed = false;
   
@@ -100,7 +100,7 @@ export class CustomerComponent extends MyCRUD<CustomerModel>{
     
     model.key = data.key;
     model.rfc = "XAXX010101000";
-    model.keyBusiness = 0;
+    model.keyBusiness = "0";
 
     this.getSpinnerService().show();
 

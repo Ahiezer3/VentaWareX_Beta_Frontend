@@ -16,7 +16,7 @@ export class MyCRUD<T> {
 
     private distroy$: Subject<void> = new Subject<void>();
 
-    idParameter : number | undefined;
+    idParameter : string | undefined;
     private data : any | undefined;
     private modelFound = false;
     private formModel: FormGroup | undefined;
@@ -34,8 +34,7 @@ export class MyCRUD<T> {
     onInit(){
 
         this.activatedRoute.paramMap.pipe(takeUntil(this.distroy$)).subscribe(params => {
-            const id = params.get('id');
-            this.idParameter = id ? parseInt(id) : undefined;
+            this.idParameter = params.get('id') ?? undefined;
             this.setIdParameter(this.idParameter);
         });
       
@@ -94,7 +93,7 @@ export class MyCRUD<T> {
 
     }
 
-    update(id:number, model:T) {
+    update(id: string | number, model:T) {
     
         this.service.update(id,model).pipe(takeUntil(this.distroy$)).subscribe({
             next: res => {
@@ -162,7 +161,7 @@ export class MyCRUD<T> {
         this.spinnerService.hide();
     }
 
-    setIdParameter(idParameter: number | undefined){
+    setIdParameter(idParameter: string | undefined){
         this.idParameter = idParameter;
     }
 

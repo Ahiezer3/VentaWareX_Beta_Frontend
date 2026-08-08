@@ -15,11 +15,11 @@ export class ProductLoadService extends MyService<ProductLoad>{
     this.setEndpoint('productLoads/');
   }
 
-  getProduct(id:number): Observable<any> {
+  getProduct(id: string | number): Observable<any> {
     return this.productService.find(id);
   }
 
-  loads(id:number | undefined, page:string, limit:string): Observable<any> {
+  loads(id: string | number | undefined, page:string, limit:string): Observable<any> {
     return this.myResponse(
       this.getHttpClient().get<ProductLoad>(this.getUrlComplete()+"loads/"+id+"?page="+page+"&limit="+limit)
     );

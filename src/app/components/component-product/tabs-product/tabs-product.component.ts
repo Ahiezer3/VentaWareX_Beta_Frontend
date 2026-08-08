@@ -14,7 +14,7 @@ export class TabsProductComponent implements AfterViewInit{
   @ViewChild('tabPricesProduct') tabPricesProduct! : ElementRef;
   @ViewChild('tabLoadProduct') tabLoadProduct! : ElementRef;
 
-  productId: number | undefined;
+  productId: string | undefined;
   
   constructor(private navigate: NavigateToService) {}
   
@@ -64,7 +64,7 @@ export class TabsProductComponent implements AfterViewInit{
     this.navigate.navigateTo(path+'/'+this.productId);
   }
 
-  setProductId(productId: number | undefined) {
+  setProductId(productId: string | undefined) {
     this.productId = productId;
   }
 }

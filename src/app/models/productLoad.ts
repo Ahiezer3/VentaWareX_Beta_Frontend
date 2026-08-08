@@ -1,7 +1,7 @@
 
 export interface ProductLoad {
-    key: number | undefined;
-    keyProduct: number | undefined;
+    key: string | undefined;
+    keyProduct: string | undefined;
     loadTo: string;
     loadType: string;
     currentStock: number;

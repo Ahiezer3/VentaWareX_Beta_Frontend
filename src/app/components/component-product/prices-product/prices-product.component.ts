@@ -100,8 +100,7 @@ export class PricesProductComponent extends MyCRUD<ProductPricesModel>{
 
   placeProduct() {
 
-    let idParameter = this.getIdParameter();
-    idParameter = idParameter ? idParameter : -1;
+    let idParameter = this.getIdParameter() ?? -1;
 
     this.productService.find(idParameter).pipe(takeUntil(this.distroySubscriptions$)).subscribe(
         {

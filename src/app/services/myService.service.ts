@@ -29,7 +29,7 @@ export class MyService<T> {
     );
   }
 
-  find(id:number): Observable<any> {
+  find(id: string | number): Observable<any> {
     return this.myResponse(
       this.http.get<T>(this.getUrlComplete()+id)
     );
@@ -43,13 +43,13 @@ export class MyService<T> {
 
   }
 
-  update(id:number, product:T): Observable<any> {
+  update(id: string | number, product:T): Observable<any> {
     return this.myResponse(
       this.http.patch<any>(this.getUrlComplete() + id, product)
     );
   }
 
-  remove(id:number): Observable<any> {
+  remove(id: string | number): Observable<any> {
     return this.myResponse(
       this.http.delete<T>(this.getUrlComplete()+id)
     );

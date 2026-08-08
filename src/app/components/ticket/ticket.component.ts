@@ -29,7 +29,7 @@ export class TicketComponent implements OnInit {
 
   ticketData:any | undefined;
 
-  keySale:number | undefined;
+  keySale: string | undefined;
 
   constructor(private saleService:SaleService, 
     private spinnerService: SpinnerService, 
@@ -42,8 +42,7 @@ export class TicketComponent implements OnInit {
   ngOnInit() {
 
     this.activatedRoute.paramMap.pipe(takeUntil(this.distroySuscriptions$)).subscribe(params => {
-        const id = params.get('id');
-        this.keySale = id ? parseInt(id) : undefined;
+        this.keySale = params.get('id') ?? undefined;
     });
 
     this.placeTicket();

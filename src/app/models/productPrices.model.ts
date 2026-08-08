@@ -2,8 +2,8 @@
 import { ProductModel } from "./product.model";
 
 export interface ProductPricesModel {
-    key: number,
-    keyProduct: number | undefined;
+    key: string,
+    keyProduct: string | undefined;
     basePrice: number;
     basePriceTaxes: number;
     listOne: number;
