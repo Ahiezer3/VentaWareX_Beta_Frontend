@@ -9,7 +9,7 @@ export class MyService<T> {
   
   httpClient: HttpClient;
 
-  URL: string = "http://localhost:8080/";
+  URL: string = "http://localhost:8080/api/";
 
   ENDPOINT: string = "";
 
@@ -66,8 +66,8 @@ export class MyService<T> {
           return res;
         }),
         catchError(error => {
-          console.error('error', error.message);
-          throw new Error(error.message);
+          console.error('error', error.error.message);
+          throw new Error(error.error.message);
         })
       
     );

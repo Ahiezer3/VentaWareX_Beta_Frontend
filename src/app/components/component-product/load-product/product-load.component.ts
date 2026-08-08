@@ -147,7 +147,7 @@ export class ProductLoadComponent extends MyCRUD<ProductLoad> implements AfterVi
 
     this.productLoadService.getProduct(this.getIdParameter() ?? 0).pipe(takeUntil(this.distroySuscriptions$)).subscribe({
         next: (res: any) => {
-            this.isReturn = res.data.return;
+            this.isReturn = res.data.isReturn;
             this.currentStock = res.data.currentStock;
             this.currentStockReturn = res.data.currentStockReturn;
 
@@ -221,7 +221,7 @@ export class ProductLoadComponent extends MyCRUD<ProductLoad> implements AfterVi
     this.stockHistoryLoad = content.map((row:any) => {
       return   {
         key: row.key,
-        sku: row.productKey,
+        sku: row.keyProduct,
         date : this.tool.formatDate(new Date(row.dateLoad)),
         loadTo: this.tool.loadToFormat(row.loadTo),
         loadType : row.loadType && row.loadType == "increase" ? "Entrada" : "Salida",

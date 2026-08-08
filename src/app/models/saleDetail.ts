@@ -12,7 +12,7 @@ export interface SaleDetailModel extends MyModel{
     quantityReturn: number;
     quantityPackaging: number;
     quantityRefund: number;
-    return: boolean;
+    isReturn: boolean;
     iva: number;
     ieps: number;
     subtotalOriginal: number;

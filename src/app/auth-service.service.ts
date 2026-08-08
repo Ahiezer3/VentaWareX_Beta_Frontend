@@ -21,7 +21,7 @@ export class AuthService extends MyService<AuthModel> {
     private navigateService: NavigateToService) {
 
       super(http);
-      this.setEndpoint('auth/');
+      this.setEndpoint('auth/login');
   }
 
   login(email: string, password: string) {

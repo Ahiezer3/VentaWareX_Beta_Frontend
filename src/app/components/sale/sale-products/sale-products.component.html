@@ -63,9 +63,9 @@
                                                     <div  class="saleDetailsColumn">
                                                         <label>Envase</label>
                                                         <div class="detailQuantity">
-                                                            <input #quantityReturnInput type="number" class="detail quantity no-spinner borderDetail" [(ngModel)]="productSale.quantityReturn" [ngModelOptions]="{standalone: true}" (ngModelChange)="updateProduct(productSale, i, 'quantityReturn', 'desktop')" min="0" [disabled]="!productSale.return">
-                                                            <button class="quantityButtonIncrease" *ngIf="productSale.return" (click)="quantityReturnIncrease(productSale)">+</button>
-                                                            <button class="quantityButtonDecrease" *ngIf="productSale.return" (click)="quantityReturnDecrease(productSale)">-</button>
+                                                            <input #quantityReturnInput type="number" class="detail quantity no-spinner borderDetail" [(ngModel)]="productSale.quantityReturn" [ngModelOptions]="{standalone: true}" (ngModelChange)="updateProduct(productSale, i, 'quantityReturn', 'desktop')" min="0" [disabled]="!productSale.isReturn">
+                                                            <button class="quantityButtonIncrease" *ngIf="productSale.isReturn" (click)="quantityReturnIncrease(productSale)">+</button>
+                                                            <button class="quantityButtonDecrease" *ngIf="productSale.isReturn" (click)="quantityReturnDecrease(productSale)">-</button>
                                                         </div>
                                                     </div>
                                                     <div  class="saleDetailsColumn">
@@ -171,9 +171,9 @@
                                                 <div>
                                                     <label class="detail labelDetail">Envase</label>
                                                     <div class="detailQuantity">
-                                                        <input #quantityReturnMobileInput type="number" class="detail quantity no-spinner borderDetail valueDetail" [(ngModel)]="productSale.quantityReturn" [ngModelOptions]="{standalone: true}" (ngModelChange)="updateProduct(productSale, i, 'quantityReturn','mobile')" min="0" [disabled]="!productSale.return">
-                                                        <button class="quantityButtonIncrease" *ngIf="productSale.return" (click)="quantityReturnIncrease(productSale)">+</button>
-                                                        <button class="quantityButtonDecrease" *ngIf="productSale.return" (click)="quantityReturnDecrease(productSale)">-</button>
+                                                        <input #quantityReturnMobileInput type="number" class="detail quantity no-spinner borderDetail valueDetail" [(ngModel)]="productSale.quantityReturn" [ngModelOptions]="{standalone: true}" (ngModelChange)="updateProduct(productSale, i, 'quantityReturn','mobile')" min="0" [disabled]="!productSale.isReturn">
+                                                        <button class="quantityButtonIncrease" *ngIf="productSale.isReturn" (click)="quantityReturnIncrease(productSale)">+</button>
+                                                        <button class="quantityButtonDecrease" *ngIf="productSale.isReturn" (click)="quantityReturnDecrease(productSale)">-</button>
                                                     </div>
                                                 </div>
                                                 <div>

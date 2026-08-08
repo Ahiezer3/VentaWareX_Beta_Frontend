@@ -43,8 +43,8 @@
 
                 <div id="patentSKUDiv" class="mb-4">
                     <label for="providerSku" class="form-label">*SKU Proveedor</label>
-                    <input type = "text" id = "providerSku" formControlName="provider_sku" class="form-control" data-validation = "alphanumeric" [ngClass]="{'is-invalid': formProduct.get('provider_sku')?.invalid && formProduct.get('provider_sku')?.touched}"/>
-                    <div *ngIf="formProduct.get('provider_sku')?.invalid && formProduct.get('provider_sku')?.touched" class="invalid-feedback">
+                    <input type = "text" id = "providerSku" formControlName="providerSku" class="form-control" data-validation = "alphanumeric" [ngClass]="{'is-invalid': formProduct.get('providerSku')?.invalid && formProduct.get('providerSku')?.touched}"/>
+                    <div *ngIf="formProduct.get('providerSku')?.invalid && formProduct.get('providerSku')?.touched" class="invalid-feedback">
                         <small class="text-danger">El nombre SKU proveedor es requerido.</small>
                     </div>
                 </div>
@@ -89,8 +89,8 @@
                 </div>
     
                 <div id="measureDiv" class="mb-4">
-                    <label for="return" class="form-label">*Retornable</label>
-                    <select id="return" formControlName="return" class="form-control">
+                    <label for="isReturn" class="form-label">*Retornable</label>
+                    <select id="isReturn" formControlName="isReturn" class="form-control">
                         <option id="true" value="true">Si</option>
                         <option id="false" value="false">No</option>
                     </select>

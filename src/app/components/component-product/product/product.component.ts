@@ -72,11 +72,11 @@ export class ProductComponent {
       category: ['', Validators.required],
       quantity: ['', Validators.required],
       description: ['', Validators.required],
-      provider_sku: ['', Validators.required],
+      providerSku: ['', Validators.required],
       measure: ['', Validators.required],
       image: [''],
       keyWarehouse: [''],
-      return: ['false']
+      isReturn: ['false']
     });
     
     this.getProduct();
@@ -115,7 +115,7 @@ export class ProductComponent {
 
   placeProduct(product: ProductModel) {
 
-    this.sku = product.provider_sku?? "";
+    this.sku = product.providerSku?? "";
 
     this.formProduct.setValue({
       name: product.name, 
@@ -123,11 +123,11 @@ export class ProductComponent {
       category: product.category,
       quantity: product.quantity?? 0,
       description: product.description,
-      provider_sku: product.provider_sku,
+      providerSku: product.providerSku,
       measure: product.measure,
       image: product.image,
       keyWarehouse: product.keyWarehouse?? 0,
-      return: product.return
+      isReturn: product.isReturn
     });
     
   }
@@ -167,7 +167,7 @@ export class ProductComponent {
     product.keyWarehouse = 0;
     product.currentStock = 0;
 
-    product.return = this.toolService.stringToBoolean(this.formProduct.value.return);
+    product.isReturn = this.toolService.stringToBoolean(this.formProduct.value.isReturn);
 
     this.toastService.setTitleToast("Producto");
 

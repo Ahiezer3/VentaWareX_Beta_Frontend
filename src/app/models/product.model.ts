@@ -4,7 +4,7 @@ export interface ProductModel {
     name: string | null;
     description: string | null;
     provider: string | null;
-    provider_sku: string | null;
+    providerSku: string | null;
     category: string | null;
     measure: string | null;
     quantity: number | null;
@@ -12,5 +12,5 @@ export interface ProductModel {
     keyWarehouse: number | null;
     currentStock: number | null;
     currentStockReturn: number | null;
-    return: boolean;
+    isReturn: boolean;
 }

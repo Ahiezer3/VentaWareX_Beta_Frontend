@@ -56,7 +56,7 @@
             </div>
         </div>
 
-        <div id="priceReturnDiv" class="mb-4" *ngIf="product && product.return">
+        <div id="priceReturnDiv" class="mb-4" *ngIf="product && product.isReturn">
             <label for="priceReturn" class="form-label">*Precio envase</label>
             <input type = "numeric" id = "priceReturn" formControlName="priceReturn" class="form-control" data-validation = "numeric"/>
         </div>

@@ -194,7 +194,7 @@ export class SaleProductsComponent {
   
       const productSale: SaleDetailModel = {
         keyProduct: product.product.key,
-        sku: product.product.sku,
+        sku: product.product.providerSku,
         nameProduct: product.product.name,
         listSelected: list,
         price: Number(this.tool.formatNumber(price, false)),
@@ -204,7 +204,7 @@ export class SaleProductsComponent {
         quantityReturn: 0,
         quantityPackaging: 0,
         quantityRefund: 0,
-        return: product.product.return,
+        isReturn: product.product.isReturn,
         subtotal: 0,
         iva: 0,
         ieps: 0,
@@ -308,7 +308,7 @@ export class SaleProductsComponent {
     let price: number = this.tool.calculateUnitySubtotal(priceTaxes, ivaPercentage, iepsPercentage);
     let priceOriginal: number = price;
 
-    if (product.return && product.quantity != product.quantityReturn) {
+    if (product.isReturn && product.quantity != product.quantityReturn) {
 
       if (product.quantityReturn < product.quantity) {
         quantityPackaging = Number(product.quantity) - Number(product.quantityReturn);
@@ -499,7 +499,7 @@ export class SaleProductsComponent {
   }
 
   updateQuantityReturn(product: any) { 
-    if (product.return) {
+    if (product.isReturn) {
       product.quantityReturn = product.quantity;
     }
   }
@@ -680,7 +680,7 @@ export class SaleProductsComponent {
   }
 
   isOnlyRefund(product: SaleDetailModel):boolean {
-    return product && product.return && product.quantity == 0 && product.quantityReturn > 0;
+    return product && product.isReturn && product.quantity == 0 && product.quantityReturn > 0;
   }
 
   printSaleSaved() {

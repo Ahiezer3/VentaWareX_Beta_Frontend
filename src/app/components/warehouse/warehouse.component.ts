@@ -154,7 +154,7 @@ export class WarehouseComponent implements MyTableInterface {
           
           return {
             key: product.key,
-            sku: product.provider_sku,
+            sku: product.providerSku,
             name: product.name,
             existence: product.currentStock,
             existenceReturn: product.currentStockReturn
