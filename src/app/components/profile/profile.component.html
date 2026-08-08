@@ -13,29 +13,6 @@
                   <div class="myRowForm">
 
                     <div id="nameDiv" class="mb-4">
-                        <label for="user" class="form-label">*Nombre de usuario</label>
-                        <input type = "text" id = "user" class="form-control" formControlName="user" [ngClass]="{'is-invalid': profileForm.get('user')?.invalid && profileForm.get('user')?.touched}">
-                    
-                        <div *ngIf="profileForm.get('user')?.invalid && profileForm.get('user')?.touched" class="invalid-feedback">
-                            <small class="text-danger">El nombre de usuario es requerido.</small>
-                        </div>
-                    </div>
-
-                    <div id="birthdayDiv" class="mb-4">
-                        <label for="birthday" class="form-label">*Fecha de nacimiento</label>
-                        <input type = "date" id = "birthday" class="form-control" formControlName="birthday" [ngClass]="{'is-invalid': profileForm.get('birthday')?.invalid && profileForm.get('birthday')?.touched}">
-                    
-                        <div *ngIf="profileForm.get('birthday')?.invalid && profileForm.get('birthday')?.touched" class="invalid-feedback">
-                            <small class="text-danger">La fecha de nacimiento es requerida.</small>
-                        </div>
-                    </div>
-
-                  </div>
-
-
-                  <div class="myRowForm">
-      
-                    <div id="nameDiv" class="mb-4">
                         <label for="name" class="form-label">*Nombre</label>
                         <input type = "text" id = "name" class="form-control" formControlName="name" [ngClass]="{'is-invalid': profileForm.get('name')?.invalid && profileForm.get('name')?.touched}">
                     
@@ -66,14 +43,33 @@
 
                   <div class="myRowForm">
 
-                    <div id="addressDiv" class="mb-4">
-                      <label for="address" class="form-label">Dirección</label>
-                      <input type = "text" id = "address" formControlName="address" class="form-control">
+                    <div id="emailDiv" class="mb-4">
+                      <label for="email" class="form-label">Email</label>
+                      <input type = "email" id = "email" formControlName="email" class="form-control" disable="disable">
+                    </div>
+
+                    <div id="phoneNumberDiv" class="mb-4">
+                      <label for="phoneNumber" class="form-label">Número de teléfono</label>
+                      <input type = "phoneNumber" id = "phoneNumber" formControlName="phoneNumber" class="form-control">
+                    </div>
+
+                    <div id="birthdayDiv" class="mb-4">
+                        <label for="birthday" class="form-label">*Fecha de nacimiento</label>
+                        <input type = "date" id = "birthday" class="form-control" formControlName="birthday" [ngClass]="{'is-invalid': profileForm.get('birthday')?.invalid && profileForm.get('birthday')?.touched}">
+                    
+                        <div *ngIf="profileForm.get('birthday')?.invalid && profileForm.get('birthday')?.touched" class="invalid-feedback">
+                            <small class="text-danger">La fecha de nacimiento es requerida.</small>
+                        </div>
                     </div>
 
                   </div>
 
                   <div class="myRowForm">
+
+                    <div id="addressDiv" class="mb-4">
+                      <label for="address" class="form-label">Dirección</label>
+                      <input type = "text" id = "address" formControlName="address" class="form-control">
+                    </div>
 
                     <div id="zipCodeDiv" class="mb-4">
                       <label for="zipCode" class="form-label">Código postal</label>
@@ -83,16 +79,6 @@
                     <div id="countryDiv" class="mb-4">
                       <label for="country" class="form-label">País</label>
                       <input type = "text" id = "country" formControlName="country" class="form-control">
-                    </div>
-
-                    <div id="emailDiv" class="mb-4">
-                      <label for="email" class="form-label">Email</label>
-                      <input type = "email" id = "email" formControlName="email" class="form-control" disable="disable">
-                    </div>
-
-                    <div id="phoneNumberDiv" class="mb-4">
-                      <label for="phoneNumber" class="form-label">Número de teléfono</label>
-                      <input type = "phoneNumber" id = "phoneNumber" formControlName="phoneNumber" class="form-control">
                     </div>
 
                   </div>

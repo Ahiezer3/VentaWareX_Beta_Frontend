@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NavigateToService } from '../../services/navigate-to.service';
 import { ProfileModel } from '../../models/profileModel';
 import { ProfileService } from '../../services/profile.service';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil, finalize } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -51,7 +51,6 @@ export class ProfileComponent {
     this.setConfirmationMessage("Guardar perfil", "¿Desea guardar la información?.", "Perfil guardado.");
 
     this.profileForm = this.formBuilder.group({
-      user: { value: '', disabled: true },
       name: ['', Validators.required],
       lastName: ['', Validators.required],
       mothersLastName: ['', Validators.required],
@@ -67,37 +66,37 @@ export class ProfileComponent {
     });
 
 
-    this.profileService.getData("getProfile").pipe(takeUntil(this.distroy$)).subscribe({
+    this.profileService.getData("getProfile").pipe(
+      takeUntil(this.distroy$),
+      finalize(() => this.spinnerService.hide())
+    ).subscribe({
         next: (res: any) => {
 
-          if (!res.success) {
-            console.log(res.message);
-            this.spinnerService.hide();
+          const profile = res?.data?.data ?? res?.data;
+
+          if (!profile || typeof profile !== 'object') {
+            console.log(res?.message || "No se encontró el perfil.");
             return;
           }
 
-          const profile = res.data;
-
-          this.profileForm?.setValue({
-            user: profile.user,
-            name: profile.name,
-            lastName: profile.lastName,
-            mothersLastName: profile.mothersLastName,
-            birthday: new Date(profile.birthday).toISOString().split("T")[0],
-            address: profile.address,
-            zipCode: profile.zipCode,
-            country: profile.country,
-            email: profile.email,
-            phoneNumber: profile.phoneNumber,
+          this.profileForm?.patchValue({
+            name: profile.name ?? '',
+            lastName: profile.lastName ?? '',
+            mothersLastName: profile.mothersLastName ?? '',
+            birthday: this.formatDate(profile.birthday),
+            address: profile.address ?? '',
+            zipCode: profile.zipCode ?? '',
+            country: profile.country ?? '',
+            email: profile.email ?? '',
+            phoneNumber: profile.phoneNumber ?? '',
             firstPassword: "",
             secondPassword: ""
           });
-
-          this.spinnerService.hide();
    
         },
         error: (err: { message: string; }) => {
-          this.spinnerService.hide();
+          this.toastService.setMessageToast(err.message);
+          this.toastService.emitShowEvent();
         }
     });
 
@@ -168,6 +167,21 @@ export class ProfileComponent {
     }
 
     return this.passwordDiferences;
+  }
+
+  formatDate(date: any): string {
+
+    if (!date) {
+      return "";
+    }
+
+    const formattedDate = new Date(date);
+
+    if (isNaN(formattedDate.getTime())) {
+      return "";
+    }
+
+    return formattedDate.toISOString().split("T")[0];
   }
 
   setConfirmationMessage(title:string, confirmationMessage:string, messageSuccess:string) {

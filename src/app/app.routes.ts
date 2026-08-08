@@ -24,6 +24,7 @@ import { TicketComponent } from './components/ticket/ticket.component';
 import { SaleProductsComponent } from './components/sale/sale-products/sale-products.component';
 import { EmptyComponent } from './components/empty/empty/empty.component';
 import { PrinterComponent } from './components/printer/printer.component';
+import { RegisterComponent } from './components/register/register.component';
 
 export const routes: Routes = [
     {path: "home", component: DashboardsComponent, canActivate: [AuthGuard]},
@@ -45,6 +46,7 @@ export const routes: Routes = [
     {path: 'productLoad', component: ProductLoadComponent, canActivate: [AuthGuard]},
     {path: 'productLoad/:id', component: ProductLoadComponent, canActivate: [AuthGuard]},
     {path: "login", component: LoginComponent},
+    {path: "register", component: RegisterComponent, canActivate: [authGuardLogin]},
     {path: "configuration", component: ConfigurationComponent, canActivate: [AuthGuard]},
     {path: "profile", component: ProfileComponent, canActivate: [AuthGuard]},
     {path: "notifications", component: NotificationsComponent, canActivate: [AuthGuard]},

@@ -1,0 +1,27 @@
+.MyForm {
+    background: none;
+    padding: 40px;
+}
+
+#registerLoginDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.linkLogin a {
+    color: #585858;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.linkLogin a:hover {
+    color: #8b8b8b;
+}
+
+@media (max-width:768px){
+
+    .MyForm {
+        height: auto !important;
+    }
+
+}

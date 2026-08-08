@@ -31,7 +31,7 @@ export class AppComponent implements AfterViewInit{
   menuOpen = false;
   showHeaderAndMenu: boolean = false;
   spinnerVisible = false;
-  fullPages: string[] = ["",'/','login', 'errorPage', 'index'];
+  fullPages: string[] = ["",'/','login', 'register', 'errorPage', 'index'];
 
 
   constructor(
