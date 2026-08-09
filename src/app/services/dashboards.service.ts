@@ -65,28 +65,23 @@ export class DashboardsService {
   createTotalByDay(currentDate:Date, title:string,data:any) {
 
     let labels:any[] = [];
+    let keys:any[] = [];
     let valuesTotal:any[] = [];
     let valuesTotalGain:any[] = [];
 
     data.sort((a: any, b: any) => {
-      const aDate = new Date(Date.parse(a.date));
-      const bDate = new Date(Date.parse(b.date));
-
-        // Comparar las fechas directamente
-      if (aDate < bDate) return -1;
-      if (aDate > bDate) return 1;
-      return 0;
+      return String(a.day).localeCompare(String(b.day));
     });
 
     data.map((date:any) => {
 
-      const dateTimestamp = Date.parse(date.date);
-      const dateObject = new Date(dateTimestamp);
+      const rawDate = String(date.day ?? date.date).slice(0, 10);
+      const parts = rawDate.split('-');
+      const year = Number(parts[0]);
+      const month = Number(parts[1]) - 1;
+      const day = Number(parts[2]);
 
-      const year = dateObject.getFullYear();
-      const month = dateObject.getMonth();
-      const day = dateObject.getDate();
-
+      keys.push(rawDate);
       labels.push(new Date(year, month, day).toLocaleDateString());
       valuesTotal.push(parseFloat(date.total).toString());
       valuesTotalGain.push(parseFloat(date.totalGain).toString());
@@ -95,6 +90,7 @@ export class DashboardsService {
  	
     return {
       labels: labels,
+      keys: keys,
       values: {
         valuesTotal,
         valuesTotalGain

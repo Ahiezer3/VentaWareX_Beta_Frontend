@@ -238,13 +238,10 @@ export class DashboardsComponent {
             this.totalByDayCurrentMonth.data.datasets[1].data = data.values.valuesTotalGain;
 
             const today = new Date();
-            const day = today.getDate();
-            const month = today.getMonth() + 1;
-            const year = today.getFullYear();
+            const pad = (n: number) => String(n).padStart(2, '0');
+            const todayKey = today.getFullYear() + "-" + pad(today.getMonth() + 1) + "-" + pad(today.getDate());
 
-            const todayFormat = day + "/" + month + "/" + year;
-
-            const indexToday = data.labels.indexOf(todayFormat);
+            const indexToday = data.keys ? data.keys.indexOf(todayKey) : data.labels.indexOf(new Date(today.getFullYear(), today.getMonth(), today.getDate()).toLocaleDateString());
 
             if (indexToday != -1) {
               const totalSummaryTodayNumber = data.values.valuesTotal[indexToday];
@@ -284,11 +281,8 @@ export class DashboardsComponent {
 
   loadTotalByDayByDateRange() {
 
-    const startDateLocal = this.startTotalByDayByDateRange.nativeElement?.value ? new Date(this.startTotalByDayByDateRange.nativeElement.value) : null;
-    const endDateLocal = this.endTotalByDayByDateRange.nativeElement?.value ? new Date(this.endTotalByDayByDateRange.nativeElement.value) : null;
-  
-    const startDateUTC = startDateLocal ? this.toolService.convertDateToUtc(startDateLocal) : "";
-    const endDateUTC = endDateLocal ? this.toolService.convertDateToUtc(endDateLocal) : "";
+    const startDateUTC = this.startTotalByDayByDateRange.nativeElement?.value ? String(this.startTotalByDayByDateRange.nativeElement.value) : "";
+    const endDateUTC = this.endTotalByDayByDateRange.nativeElement?.value ? String(this.endTotalByDayByDateRange.nativeElement.value) : "";
   
     if (startDateUTC && endDateUTC) {
 
